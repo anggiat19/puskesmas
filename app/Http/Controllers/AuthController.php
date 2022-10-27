@@ -26,6 +26,7 @@ class AuthController extends Controller
             return view('login');
     }
 
+
     public function register()
     {
         return view('register');
@@ -78,36 +79,50 @@ class AuthController extends Controller
         public function registerprocess(Request $request)
         {
 
-            $picturename = '';
-
-            if($request->file('photo')){
-            $extension = $request->file('photo')->getClientOriginalExtension();
-            $newName = $request->username.'-'.now()->timestamp.'.'.$extension;
-             $request->file('image')->storeAs('photo',$newName);
-            }
 
 
-            
             // dd($request->all());
             $validated = $request->validate([
                 'username' => 'required|unique:users|max:255',
                 'password' => 'required|max:255',
                 'email' => 'required',
                 'phone' => 'max:255',
-                'image'=> 'mimes:jpg,png,jpeg|image|max:2048',
+                'image'=> 'max:2048',
 
 
             ]);
+            $newName = '';
+        if($request->file('image')){
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $newName = $request->nama.'-'.now()->timestamp.'.'.$extension;
+            $request->image->move(public_path('images'), $newName);
+        }
 
-            $user['image']
+            $request['image'] = $newName;
+
+            $request['password'] = Hash::make($request->password);
+            $user = User::create([
+                'username' => $request['username'],
+                'password'=>$request['password'],
+                'email'=>$request['email'],
+                'phone'=>$request['phone'],
+
+                'image' => $newName
+            ]);
+
+
+
+
 
 
 
             Session::flash('status', 'success');
             Session::flash('message', 'Regist success');
-            return redirect('/register');
+            return redirect('register');
 
         }
+
+
 
 
 

@@ -18,9 +18,9 @@ use App\Http\Controllers\DashboardController;
 // Route::get('/', function () {
 //     return view('layouts.master');
 // });
-// Route::get('/', function () {
-//     return view('dashboard');
-// });
+Route::get('/', function () {
+    return view('home');
+});
 
 
 Route::get('login', [AuthController::class,'login'])->name('login');
