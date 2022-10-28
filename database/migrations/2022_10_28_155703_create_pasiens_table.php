@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('reqpasien_id');
-            $table->foreign('reqpasien_id')->references('id')->on('reqpasiens');
+
             $table->timestamps();
         });
     }
@@ -29,10 +28,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('pasiens');
-        Schema::table('pasiens', function (Blueprint $table) {
-            $table->dropForeign('pasiens_reqpasien_id_foreign');
-            $table->dropColumn('reqpasien_id');
 
-        });
     }
 };

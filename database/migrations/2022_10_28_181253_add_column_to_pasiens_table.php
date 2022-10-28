@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('diagnosas', function (Blueprint $table) {
-            $table->id();
-
-            $table->timestamps();
+        Schema::table('pasiens', function (Blueprint $table) {
+            $table->unsignedBigInteger('pasien_id');
+            $table->foreign('pasien_id')->references('id')->on('reqpasiens');
         });
     }
 
@@ -27,11 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diagnosas');
-
-
-
-
-
+        Schema::table('pasiens', function (Blueprint $table) {
+            $table->dropForeign('pasiens_pasien_id_foreign');
+            $table->dropColumn('pasien_id');
+        });
     }
 };

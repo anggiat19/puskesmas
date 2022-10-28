@@ -56,7 +56,7 @@ class AuthController extends Controller
              if(Auth::user()->role_id == 1){
                 return redirect('dashboard');
              }
-             if(Auth::user()->role_id == 2){
+             if(Auth::user()->role_id == 1){
                 return redirect('profile');
              }
 
