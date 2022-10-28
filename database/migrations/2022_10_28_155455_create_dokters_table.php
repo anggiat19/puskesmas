@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('obats', function (Blueprint $table) {
+        Schema::create('dokters', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_obat', 100);
-            $table->string('nm_obat',255);
-            $table->string('satuan',255);
-            $table->string('stok',255);
-            $table->enum('status', ['0', '1'])->comment('0 = ada, 1 = habis');
+            $table->string('nama_dokter',255);
+            $table->string('nip',255);
+            $table->string('telepon',255);
+            $table->text('alamat',255);
             $table->string('image',255);
-
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('obats');
+        Schema::dropIfExists('dokters');
     }
 };

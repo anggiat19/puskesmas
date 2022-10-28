@@ -48,4 +48,14 @@ class User extends Authenticatable
     protected $attributes = [
         'role_id' => 2
     ];
+
+    /**
+     * Get the user that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(Role::class, 'role_id', 'id');
+    }
 }

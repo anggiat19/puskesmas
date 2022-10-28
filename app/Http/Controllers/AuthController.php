@@ -14,7 +14,7 @@ class AuthController extends Controller
 
     public function index()
     {
-        $users = User::all();
+        $users = User::with('user')->get();
         return view('user.index',['users'=>$users]);
         // dd($users);
 

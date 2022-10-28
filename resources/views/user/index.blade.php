@@ -53,31 +53,37 @@
                 <table class="table table-bordered " >
                     <thead>
                                 <tr >
-                                    <th>no</th>
-                                    <th>nama</th>
+                                    <th style="text-align: center">no</th>
+                                    <th style="text-align: center">nama</th>
 
-                                    <th>Email</th>
-                                    <th>No Tlp</th>
+                                    <th style="text-align: center">Email</th>
+                                    <th style="text-align: center">No Tlp</th>
                                     {{-- <th>image</th> --}}
-                                    <th>Status</th>
-                                    <th>Role</th>
+                                    <th style="text-align: center">Status</th>
+                                    <th style="text-align: center">Role</th>
+                                    <th style="text-align: center">Aksi</th>
                                 </tr>
                     </thead>
                     <tbody>
                                 @foreach ($users as $user )
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $user->username }}</td>
+                                    <td style="text-align: center">{{ $loop->iteration }}</td>
+                                    <td style="text-align: center">{{ $user->username }}</td>
 
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->phone }}</td>
+                                    <td style="text-align: center">{{ $user->email }}</td>
+                                    <td style="text-align: center">{{ $user->phone }}</td>
                                     {{-- <td>
 
                                         <img src="{{ asset('images/'.$user->image) }}" height="100px" alt="">
                                     </td> --}}
 
-                                    <td>{{ $user->status }}</td>
-                                    <td>{{ $user->role_id }}</td>
+                                    <td style="text-align: center">{{ $user->status }}</td>
+                                    <td style="text-align: center">{{ $user->user->name }}</td>
+                                    <td style="text-align: center">
+
+                                        <a href="#" class="btn btn-success">Edit</a>
+                                        <a href="#" class="btn btn-danger">Delete</a>
+                                    </td>
 
                                 </tr>
 
