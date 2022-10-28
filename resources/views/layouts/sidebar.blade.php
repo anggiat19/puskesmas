@@ -27,7 +27,7 @@
           <li class="nav-item has-treeview menu-open">
             <a href="../dashboard"
                         class="nav-link ">
-                        <em class="nav-icon fa fa-home"></em>
+                        <em class="nav-icon fas fa-clinic-medical"></em>
                         <p>Dashboard</p>
                     </a>
             {{-- <ul class="nav nav-treeview">
@@ -53,20 +53,74 @@
           </li>
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-notes-medical"></i>
               <p>
-                Widgets
+                ReqPasien
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
+          <li class="nav-item">
+            <a href="pages/widgets.html" class="nav-link">
+              <i class="nav-icon fas fa-diagnoses"></i>
+              <p>
+                Diagnosa
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/widgets.html" class="nav-link">
+              <i class="nav-icon fas fa-user-md	"></i>
+              <p>
+                Pasien
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/widgets.html" class="nav-link">
+              <i class="nav-icon fas fa-pills	"></i>
+              <p>
+                Obat
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/widgets.html" class="nav-link">
+              <i class="nav-icon fas fa-stethoscope	"></i>
+              <p>
+                Dokter
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/widgets.html" class="nav-link">
+              <i class="nav-icon fas fa-weight	"></i>
+              <p>
+                Poli
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/widgets.html" class="nav-link">
+              <i class="nav-icon fas fa-mortar-pestle	"></i>
+              <p>
+                Resep
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+          {{-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Layout Options
                 <i class="fas fa-angle-left right"></i>
-                {{-- <span class="badge badge-info right">6</span> --}}
+
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -265,7 +319,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> --}}
           <li class="nav-header">Master</li>
           {{-- <li class="nav-item">
             <a href="pages/calendar.html" class="nav-link">
