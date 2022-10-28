@@ -4,7 +4,7 @@
     <a href="index3.html" class="brand-link">
       <img src="{{ asset('adminlte') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Puskesmas</span>
     </a>
 
     <!-- Sidebar -->
@@ -26,7 +26,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
             <a href="../dashboard"
-                        class="nav-link "">
+                        class="nav-link ">
                         <em class="nav-icon fa fa-home"></em>
                         <p>Dashboard</p>
                     </a>

@@ -58,7 +58,7 @@
 
                                     <th>Email</th>
                                     <th>No Tlp</th>
-                                    <th>image</th>
+                                    {{-- <th>image</th> --}}
                                     <th>Status</th>
                                     <th>Role</th>
                                 </tr>
@@ -71,10 +71,10 @@
 
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->phone }}</td>
-                                    <td>
+                                    {{-- <td>
 
                                         <img src="{{ asset('images/'.$user->image) }}" height="100px" alt="">
-                                    </td>
+                                    </td> --}}
 
                                     <td>{{ $user->status }}</td>
                                     <td>{{ $user->role_id }}</td>

@@ -340,13 +340,13 @@ https://templatemo.com/tm-540-lava-landing-page
                             <br><br>If you need this contact form to send email to your inbox, you may follow our <a
                                 rel="nofollow" href="https://templatemo.com/contact" target="_parent">contact</a> page
                             for more detail.</p>
-                        <ul class="social">
+                        {{-- <ul class="social">
                             <li><a href="https://fb.com/templatemo"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                             <li><a href="#"><i class="fa fa-rss"></i></a></li>
                             <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                        </ul>
+                        </ul> --}}
                     </div>
                 </div>
             </div>
