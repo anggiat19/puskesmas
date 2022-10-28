@@ -1,0 +1,94 @@
+.container-fluid{
+    background-color: black;
+}
+
+.infinity-image-container{
+    background: url('bg.jpg') center no-repeat;
+    background-size: cover;
+    opacity: 0.6;
+    height: 100vh;
+}
+
+.infinity-form-container{
+    background: #282129;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.infinity-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.infinity-form h2 {
+    font-weight: bold;
+    color: rgb(212, 212, 212);
+}
+
+.infinity-form .form-input {
+    position: relative;
+}
+
+.infinity-form .form-input input {
+    width: 100%;
+    margin-bottom: 20px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: white;
+    padding-left: 45px;
+}
+
+.infinity-form .form-input span {
+    position: absolute;
+    top: 8px;
+    padding-left: 20px;
+    color: #777;
+}
+
+.infinity-form .form-input input:focus,
+.infinity-form .form-input input:valid {
+    border: 2px solid #000;
+}
+
+.infinity-form input[type="checkbox"]:not(:checked) + label:before{
+    background: transparent;
+    border:2px solid white;
+    width: 15px;
+    height: 15px;
+}
+
+.infinity-form .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #4285f4 !important;
+  border:0px;
+}
+
+.infinity-form button[type="submit"] {
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #db9f57, #dead72);   /*Button Color*/
+    color: #fff;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.infinity-form button[type="submit"]:hover {
+    background: linear-gradient(45deg, #dead72, #db9f57);   /*Button color when hover*/
+}
+
+.forget-link , .login-link , .register-link {
+    color: #fff;
+    font-weight: bold;
+}
+
+.forget-link:hover , .login-link:hover , .register-link:hover {
+    color: #dead72;
+    text-decoration: none;
+}
