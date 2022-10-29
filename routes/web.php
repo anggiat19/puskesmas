@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DokterController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -35,6 +36,10 @@ Route::middleware('auth')->group(function(){
     Route::get('logout',[AuthController::class,'logout']);
     Route::get('dashboard',[DashboardController::class, 'index'])->middleware('only_admin');
     Route::get('user/index', [AuthController::class,'index']);
+
+
+
+    Route::get('dokter/index', [DokterController::class,'index']);
 
 
 
