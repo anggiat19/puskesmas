@@ -15,10 +15,8 @@ return new class extends Migration
     {
         Schema::create('reqpasiens', function (Blueprint $table) {
             $table->id();
-            $table->string('no_antrian', 100);
             $table->date('tgl_daftar');
-            $table->string('no_pasien', 100);
-            $table->string('no_identitas', 100);
+            $table->string('no_bpjs', 100);
             $table->date('tgl_lhr');
             $table->string('tmpt_lhr', 100);
             $table->string('umur', 100);

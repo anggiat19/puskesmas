@@ -6,5 +6,12 @@ use Illuminate\Http\Request;
 
 class PoliController extends Controller
 {
-    //
+    public function index()
+    {
+        // $dokters = Dokter::all();
+        // return view('dokter.index',['dokters'=>$dokters]);
+        // dd($users);
+
+        return view('poli.index');
+     }
 }

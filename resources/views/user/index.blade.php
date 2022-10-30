@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@section('title','user')
 
 @section('content')
 
@@ -44,7 +44,23 @@
     <section class="content">
         <div class="card">
           <div class="card-header">
-
+            <div class="float-right">
+                <a href="" class="btn btn-success">
+                    <em class="fas fa-plus"></em>
+                    Tambah Data
+                </a>
+            </div>
+            <form class="form-inline ml-3">
+                <div class="input-group input-group-sm">
+                    <input class="form-control form-control-navbar" name="q" type="search" placeholder="Search"
+                        aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-navbar" type="submit">
+                            <em class="fas fa-search"></em>
+                        </button>
+                    </div>
+                </div>
+            </form>
           </div>
           <!-- /.card-header -->
           <div class="card-body">

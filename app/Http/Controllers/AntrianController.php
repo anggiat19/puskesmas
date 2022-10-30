@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ObatController extends Controller
+class AntrianController extends Controller
 {
     public function index()
     {
@@ -12,6 +12,6 @@ class ObatController extends Controller
         // return view('dokter.index',['dokters'=>$dokters]);
         // dd($users);
 
-        return view('obat.index');
+        return view('antrian.index');
      }
 }

@@ -3,8 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ObatController;
+use App\Http\Controllers\PoliController;
+use App\Http\Controllers\ResepController;
 use App\Http\Controllers\DokterController;
+use App\Http\Controllers\PasienController;
+use App\Http\Controllers\AntrianController;
+use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ReqpasienController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +30,9 @@ use App\Http\Controllers\DashboardController;
 // Route::get('/', function () {
 //     return view('home');
 // });
+
+
 Route::get('/', [HomeController::class,'home']);
-
-
     Route::get('login', [AuthController::class,'login'])->name('login');
     Route::post('login',[AuthController::class,'authenticationg']);
     Route::get('register', [AuthController::class,'register']);
@@ -39,7 +46,69 @@ Route::middleware('auth')->group(function(){
 
 
 
+
+
     Route::get('dokter/index', [DokterController::class,'index']);
+
+
+
+
+
+
+
+    Route::get('diagnosa/index', [DiagnosaController::class,'index']);
+
+
+
+
+
+
+    Route::get('reqpasien/index', [ReqpasienController::class,'index']);
+
+
+
+
+
+
+    Route::get('pasien/index', [PasienController::class,'index']);
+
+
+
+
+
+
+
+    Route::get('obat/index', [ObatController::class,'index']);
+
+
+
+
+
+
+
+    Route::get('poli/index', [PoliController::class,'index']);
+
+
+
+
+
+
+
+    Route::get('resep/index', [ResepController::class,'index']);
+
+
+
+
+
+
+
+    Route::get('antrian/index', [AntrianController::class,'index']);
+
+
+
+
+
+
 
 
 

@@ -24,35 +24,16 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
+          <li class="nav-item ">
             <a href="../dashboard"
-                        class="nav-link ">
+                        class="nav-link {{ Request::is('dashboard') ?'active':''}}">
                         <em class="nav-icon fas fa-clinic-medical"></em>
                         <p>Dashboard</p>
                     </a>
-            {{-- <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
-                </a>
-              </li>
-            </ul> --}}
+
           </li>
-          <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+          <li class="nav-item ">
+            <a href="/reqpasien/index" class="nav-link {{ Request::is('reqpasien/index') ?'active':''}}">
               <i class="nav-icon fas fa-notes-medical"></i>
               <p>
                 ReqPasien
@@ -61,7 +42,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="/diagnosa/index" class="nav-link {{ Request::is('diagnosa/index') ?'active':''}}">
               <i class="nav-icon fas fa-diagnoses"></i>
               <p>
                 Diagnosa
@@ -70,7 +51,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="/pasien/index" class="nav-link  {{ Request::is('pasien/index') ?'active':''}}">
               <i class="nav-icon fas fa-user-md	"></i>
               <p>
                 Pasien
@@ -79,7 +60,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="/obat/index" class="nav-link  {{ Request::is('obat/index') ?'active':''}}">
               <i class="nav-icon fas fa-pills	"></i>
               <p>
                 Obat
@@ -88,7 +69,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/dokter/index" class="nav-link">
+            <a href="/dokter/index" class="nav-link {{ Request::is('dokter/index') ?'active':''}}">
               <i class="nav-icon fas fa-stethoscope	"></i>
               <p>
                 Dokter
@@ -97,7 +78,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="/poli/index" class="nav-link {{ Request::is('poli/index') ?'active':''}}">
               <i class="nav-icon fas fa-weight	"></i>
               <p>
                 Poli
@@ -106,7 +87,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="/resep/index" class="nav-link  {{ Request::is('resep/index') ?'active':''}}">
               <i class="nav-icon fas fa-mortar-pestle	"></i>
               <p>
                 Resep
@@ -114,6 +95,16 @@
               </p>
             </a>
           </li>
+        </li>
+        <li class="nav-item">
+          <a href="/antrian/index" class="nav-link  {{ Request::is('antrian/index') ?'active':''}}">
+            <i class="nav-icon fas fa-hourglass-end	"></i>
+            <p>
+              Antrian
+              {{-- <span class="right badge badge-danger">New</span> --}}
+            </p>
+          </a>
+        </li>
           {{-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -332,7 +323,7 @@
           </li> --}}
           <li class="nav-item">
 
-                <a href="/user/index" class="nav-link ">
+                <a href="/user/index" class="nav-link {{ Request::is('user/index') ?'active':''}}">
               <i class="nav-icon fas fa-user-circle"></i>
               {{-- <i class="fa-solid fa-user"></i> --}}
               <p>
