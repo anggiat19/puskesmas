@@ -49,6 +49,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'anggiat167@gmail.com',
             'phone' => '085364638752',
             'image'=>'aku.png',
+            'role_id'=>'1',
+
 
         ]);
 
