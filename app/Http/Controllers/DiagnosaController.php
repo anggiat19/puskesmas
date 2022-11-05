@@ -14,4 +14,7 @@ class DiagnosaController extends Controller
 
         return view('diagnosa.index');
      }
+     public function tambah_data(){
+        return view('diagnosa.tambah_data');
+     }
 }

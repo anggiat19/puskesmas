@@ -45,7 +45,7 @@
         <div class="card">
           <div class="card-header">
             <div class="float-right">
-                <a href="" class="btn btn-success">
+                <a href="{{ route('poli.tambah_data') }}" class="btn btn-success">
                     <em class="fas fa-plus"></em>
                     Tambah Data
                 </a>
@@ -70,13 +70,9 @@
                     <thead>
                                 <tr >
                                     <th style="text-align: center">no</th>
-                                    <th style="text-align: center">nama_Dokter</th>
+                                    <th style="text-align: center">Kode Poli</th>
 
-                                    <th style="text-align: center">Nip</th>
-                                    <th style="text-align: center">No Tlp</th>
-                                    {{-- <th>image</th> --}}
-                                    <th style="text-align: center">Alamat</th>
-                                    <th style="text-align: center">Image</th>
+                                    <th style="text-align: center">Nama Poli</th>
                                     <th style="text-align: center">Aksi</th>
                                 </tr>
                     </thead>

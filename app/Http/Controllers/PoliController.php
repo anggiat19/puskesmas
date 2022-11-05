@@ -14,4 +14,7 @@ class PoliController extends Controller
 
         return view('poli.index');
      }
+     public function tambah_data(){
+        return view('poli.tambah_data');
+     }
 }

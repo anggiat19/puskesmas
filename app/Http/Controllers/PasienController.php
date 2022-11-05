@@ -14,4 +14,7 @@ class PasienController extends Controller
 
         return view('pasien.index');
      }
+     public function tambah_data(){
+        return view('pasien.tambah_data');
+     }
 }

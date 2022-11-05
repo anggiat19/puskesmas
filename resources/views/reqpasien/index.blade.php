@@ -46,7 +46,7 @@
         <div class="card">
           <div class="card-header">
             <div class="float-right">
-                <a href="" class="btn btn-success">
+                <a href="{{ route('reqpasien.tambah_data') }}" class="btn btn-success">
                     <em class="fas fa-plus"></em>
                     Tambah Data
                 </a>

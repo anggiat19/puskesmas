@@ -43,13 +43,14 @@ Route::middleware('auth')->group(function(){
     Route::get('logout',[AuthController::class,'logout']);
     Route::get('dashboard',[DashboardController::class, 'index'])->middleware('only_admin');
     Route::get('user/index', [AuthController::class,'index']);
+    
 
 
 
 
 
     Route::get('dokter/index', [DokterController::class,'index']);
-
+    
 
 
 
@@ -57,13 +58,14 @@ Route::middleware('auth')->group(function(){
 
 
     Route::get('diagnosa/index', [DiagnosaController::class,'index']);
-
+    Route::get('/diagnosa/tambah_data', ['as' => 'diagnosa.tambah_data', 'uses' => DiagnosaController::class . '@tambah_data']);
 
 
 
 
 
     Route::get('reqpasien/index', [ReqpasienController::class,'index']);
+    Route::get('/reqpasien/tambah_data', ['as' => 'reqpasien.tambah_data', 'uses' => ReqpasienController::class . '@tambah_data']);
 
 
 
@@ -71,6 +73,7 @@ Route::middleware('auth')->group(function(){
 
 
     Route::get('pasien/index', [PasienController::class,'index']);
+    Route::get('/pasien/tambah_data', ['as' => 'pasien.tambah_data', 'uses' => PasienController::class . '@tambah_data']);
 
 
 
@@ -87,7 +90,7 @@ Route::middleware('auth')->group(function(){
 
 
     Route::get('poli/index', [PoliController::class,'index']);
-
+    Route::get('/poli/tambah_data', ['as' => 'poli.tambah_data', 'uses' => PoliController::class . '@tambah_data']);
 
 
 

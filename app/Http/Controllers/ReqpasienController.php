@@ -14,4 +14,7 @@ class ReqpasienController extends Controller
 
         return view('reqpasien.index');
      }
+     public function tambah_data(){
+        return view('reqpasien.tambah_data');
+     }
 }
