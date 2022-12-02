@@ -71,7 +71,11 @@
           </li>
           <li class="nav-item">
             <a href="/penyakit/index" class="nav-link {{ Request::is('penyakit/index') ?'active':''}}">
-              <i class="nav-icon fas fa-weight	"></i>
+              {{-- <i class="nav-icon fas fa-weight	"></i> --}}
+
+              {{-- <i class="nav-icon fa-solid fa-virus-covid"></i> --}}
+              <i class="nav-icon fas fa-head-side-cough"></i>
+
               <p>
                 Penyakit
                 {{-- <span class="right badge badge-danger">New</span> --}}
@@ -90,7 +94,7 @@
         </li>
         <li class="nav-item">
           <a href="/detailpenyakit/index" class="nav-link  {{ Request::is('detailpenyakit/index') ?'active':''}}">
-            <i class="nav-icon fas fa-hourglass-end	"></i>
+            <i class="nav-icon fas fa-briefcase-medical	"></i>
             <p>
               DetailPenyakit
               {{-- <span class="right badge badge-danger">New</span> --}}
