@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','antrian')
+@section('title','spesialis')
 @section('content')
 
 
@@ -27,16 +27,15 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
-
         <div class="row mb-2">
 
           <div class="col-sm-6">
-            <h1>Antrian</h1>
+            <h1>Spesialis</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Antrian</li>
+              <li class="breadcrumb-item active">Spesialis</li>
             </ol>
           </div>
         </div>
@@ -46,10 +45,44 @@
         <div class="card">
           <div class="card-header">
             <div class="float-right">
-                <a href="" class="btn btn-success">
+                <a href="" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
                     <em class="fas fa-plus"></em>
-                    Tambah Data
-                </a>
+                   Tambah Data
+                   </a>
+
+                           <!-- Modal -->
+                           <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                           <div class="modal-dialog" role="document">
+                               <div class="modal-content">
+                               <div class="modal-header">
+                                   <h5 class="modal-title" id="exampleModalLongTitle">Tambah Data Spesialis</h5>
+                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                                   </button>
+                               </div>
+                               <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label for="inputClientCompany">Kode Spesialis</label>
+                                    <input type="text" id="inputClientCompany" class="form-control">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="inputClientCompany">Nama Spesialis</label>
+                                    <input type="text" id="inputClientCompany" class="form-control">
+                                  </div>
+
+
+
+
+
+                               </div>
+                               <div class="modal-footer">
+                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                   <button type="button" class="btn btn-primary">Save changes</button>
+                               </div>
+                               </div>
+                           </div>
+                           </div>
             </div>
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
@@ -65,20 +98,16 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-
             <div id="jsGrid1">
 
                 <table class="table table-bordered " >
                     <thead>
                                 <tr >
                                     <th style="text-align: center">no</th>
-                                    <th style="text-align: center">nama_Dokter</th>
+                                    <th style="text-align: center">kode_spesialis</th>
 
-                                    <th style="text-align: center">Nip</th>
-                                    <th style="text-align: center">No Tlp</th>
-                                    {{-- <th>image</th> --}}
-                                    <th style="text-align: center">Alamat</th>
-                                    <th style="text-align: center">Image</th>
+                                    <th style="text-align: center">nama_spesialis</th>
+
                                     <th style="text-align: center">Aksi</th>
                                 </tr>
                     </thead>

@@ -5,13 +5,19 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\PoliController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ResepController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\DiagnosaController;
+use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReqpasienController;
+use App\Http\Controllers\SpesialisController;
+use App\Http\Controllers\PemeriksaanController;
+use App\Http\Controllers\DetailPenyakitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,37 +49,39 @@ Route::middleware('auth')->group(function(){
     Route::get('logout',[AuthController::class,'logout']);
     Route::get('dashboard',[DashboardController::class, 'index'])->middleware('only_admin');
     Route::get('user/index', [AuthController::class,'index']);
-    
-
-
-
-
-
-    Route::get('dokter/index', [DokterController::class,'index']);
-    
-
-
-
-
-
-
-    Route::get('diagnosa/index', [DiagnosaController::class,'index']);
-    Route::get('/diagnosa/tambah_data', ['as' => 'diagnosa.tambah_data', 'uses' => DiagnosaController::class . '@tambah_data']);
-
-
-
-
-
-    Route::get('reqpasien/index', [ReqpasienController::class,'index']);
-    Route::get('/reqpasien/tambah_data', ['as' => 'reqpasien.tambah_data', 'uses' => ReqpasienController::class . '@tambah_data']);
-
-
-
 
 
 
     Route::get('pasien/index', [PasienController::class,'index']);
     Route::get('/pasien/tambah_data', ['as' => 'pasien.tambah_data', 'uses' => PasienController::class . '@tambah_data']);
+
+
+    Route::get('dokter/index', [DokterController::class,'index']);
+    Route::get('/dokter/tambah_data', ['as' => 'dokter.tambah_data', 'uses' => DokterController::class . '@tambah_data']);
+
+    Route::get('penyakit/index', [PenyakitController::class,'index']);
+
+
+
+    Route::get('spesialis/index', [SpesialisController::class,'index']);
+
+
+    Route::get('pemeriksaan/index', [PemeriksaanController::class,'index']);
+
+
+    Route::get('detailpenyakit/index', [DetailPenyakitController::class,'index']);
+
+
+
+
+
+    Route::get('karyawan/index', [KaryawanController::class,'index']);
+
+
+
+    Route::get('email/index', [EmailController::class,'index']);
+
+
 
 
 
@@ -89,15 +97,6 @@ Route::middleware('auth')->group(function(){
 
 
 
-    Route::get('poli/index', [PoliController::class,'index']);
-    Route::get('/poli/tambah_data', ['as' => 'poli.tambah_data', 'uses' => PoliController::class . '@tambah_data']);
-
-
-
-
-
-
-    Route::get('resep/index', [ResepController::class,'index']);
 
 
 
@@ -105,7 +104,15 @@ Route::middleware('auth')->group(function(){
 
 
 
-    Route::get('antrian/index', [AntrianController::class,'index']);
+
+
+
+
+
+
+
+
+
 
 
 

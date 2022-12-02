@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dokter;
 use Illuminate\Http\Request;
 
-class DokterController extends Controller
+class EmailController extends Controller
 {
     public function index()
     {
@@ -13,11 +12,6 @@ class DokterController extends Controller
         // return view('dokter.index',['dokters'=>$dokters]);
         // dd($users);
 
-        return view('dokter.index');
-     }
-
-
-     public function tambah_data(){
-        return view('dokter.tambah_data');
+        return view('email.index');
      }
 }

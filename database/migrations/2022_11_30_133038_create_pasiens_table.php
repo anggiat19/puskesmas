@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dokters', function (Blueprint $table) {
+        Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_d',255);
-
-            $table->string('nama_d',255);
-            $table->enum('jenis_kel_d', ['L', 'P']);
-            $table->text('alamat_d');
-            $table->string('image',255);
+            $table->string('kode_p', 255);
+            $table->string('nama_p', 255);
+            $table->enum('jenis_kel_p', ['L', 'P']);
+            $table->date('tgl_lahir_p');
+            $table->string('telp_p', 100);
+            $table->text('alamat_p');
+            $table->string('nama_kel_p', 100);
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dokters');
+        Schema::dropIfExists('pasiens');
     }
 };

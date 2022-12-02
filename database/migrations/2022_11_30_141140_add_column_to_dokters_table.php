@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('reqpasiens', function (Blueprint $table) {
-            $table->unsignedBigInteger('no_antrian_id')->after('tgl_daftar');
-            $table->foreign('no_antrian_id')->references('id')->on('antrians');
+        Schema::table('dokters', function (Blueprint $table) {
+            $table->unsignedBigInteger('spesialis_id');
+            $table->foreign('spesialis_id')->references('id')->on('spesialis');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('reqpasiens', function (Blueprint $table) {
+        Schema::table('dokters', function (Blueprint $table) {
             //
         });
     }

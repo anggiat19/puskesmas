@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','obat')
+@section('title','pemeriksaan')
 @section('content')
 
 
@@ -30,12 +30,12 @@
         <div class="row mb-2">
 
           <div class="col-sm-6">
-            <h1>Obat</h1>
+            <h1>Pemeriksaan</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Obat</li>
+              <li class="breadcrumb-item active">Pemeriksaan</li>
             </ol>
           </div>
         </div>
@@ -45,6 +45,7 @@
         <div class="card">
           <div class="card-header">
             <div class="float-right">
+
                 <a href="" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
                     <em class="fas fa-plus"></em>
                    Tambah Data
@@ -55,7 +56,7 @@
                            <div class="modal-dialog" role="document">
                                <div class="modal-content">
                                <div class="modal-header">
-                                   <h5 class="modal-title" id="exampleModalLongTitle">Tambah Data Obat</h5>
+                                   <h5 class="modal-title" id="exampleModalLongTitle">Tambah Data Pemeriksa</h5>
                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                    <span aria-hidden="true">&times;</span>
                                    </button>
@@ -63,38 +64,14 @@
                                <div class="modal-body">
 
                                 <div class="form-group">
-                                    <label for="inputClientCompany">Kode Obat</label>
+                                    <label for="inputClientCompany">No Periksa</label>
                                     <input type="text" id="inputClientCompany" class="form-control">
                                   </div>
                                   <div class="form-group">
-                                    <label for="inputClientCompany">Nama Obat</label>
-                                    <input type="text" id="inputClientCompany" class="form-control">
+                                    <label for="inputProjectLeader">Tanggal Periksa</label>
+                                    <input type="date" id="inputProjectLeader" class="form-control">
                                   </div>
 
-
-                                  <div class="form-group">
-                                    <label for="inputClientCompany">Satuan</label>
-                                    <input type="text" id="inputClientCompany" class="form-control">
-                                  </div>
-
-                                  <div class="form-group">
-                                    <label for="inputClientCompany">Stok</label>
-                                    <input type="text" id="inputClientCompany" class="form-control">
-                                  </div>
-
-                                  <div class="form-group mb-0">
-                                    <label for="status">Status</label>
-                                    <select name="status" id="status" class="form-control" required>
-                                        <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>Tersedia
-                                        </option>
-                                        <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>Habis</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="inputClientCompany">image</label>
-                                    <input type="file" id="inputClientCompany" class="form-control">
-                                  </div>
 
 
 
@@ -127,14 +104,13 @@
                     <thead>
                                 <tr >
                                     <th style="text-align: center">no</th>
-                                    <th style="text-align: center">kode_obat</th>
+                                    <th style="text-align: center">no_periksa</th>
 
-                                    <th style="text-align: center">nama_obat</th>
-                                    <th style="text-align: center">satuan</th>
+                                    <th style="text-align: center">tgl_periksa</th>
+                                    <th style="text-align: center">pasien_id</th>
                                     {{-- <th>image</th> --}}
-                                    <th style="text-align: center">stok</th>
-                                    <th style="text-align: center">status</th>
-                                    <th style="text-align: center">image</th>
+                                    <th style="text-align: center">dokter_id</th>
+                                    <th style="text-align: center">karyawan_id</th>
                                     <th style="text-align: center">Aksi</th>
                                 </tr>
                     </thead>

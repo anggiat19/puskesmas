@@ -1,6 +1,6 @@
 @extends('layouts.master')
+@section('title','komentar')
 
-@section('title','resep')
 @section('content')
 
 
@@ -30,12 +30,12 @@
         <div class="row mb-2">
 
           <div class="col-sm-6">
-            <h1>Resep</h1>
+            <h1>Komentar</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Resep</li>
+              <li class="breadcrumb-item active">Komentar</li>
             </ol>
           </div>
         </div>
@@ -45,10 +45,54 @@
         <div class="card">
           <div class="card-header">
             <div class="float-right">
-                <a href="" class="btn btn-success">
+                {{-- <a href="{{ route('pasien.tambah_data') }}" class="btn btn-success">
                     <em class="fas fa-plus"></em>
                     Tambah Data
-                </a>
+                </a> --}}
+                <a href="" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+                    <em class="fas fa-plus"></em>
+                   Tambah Data
+                   </a>
+
+                           <!-- Modal -->
+                           <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                           <div class="modal-dialog" role="document">
+                               <div class="modal-content">
+                               <div class="modal-header">
+                                   <h5 class="modal-title" id="exampleModalLongTitle">Tambah Data Pasien</h5>
+                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                                   </button>
+                               </div>
+                               <div class="modal-body">
+
+
+                                  <div class="form-group">
+                                    <label for="inputClientCompany">Nama </label>
+                                    <input type="text" id="inputClientCompany" class="form-control">
+                                  </div>
+
+
+                                  <div class="form-group">
+                                    <label for="inputClientCompany">Email</label>
+                                    <input type="email" id="inputClientCompany" class="form-control">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="inputDescription">Pesan</label>
+                                    <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                                  </div>
+\
+
+
+                               </div>
+                               <div class="modal-footer">
+                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                   <button type="button" class="btn btn-primary">Save changes</button>
+                               </div>
+                               </div>
+                           </div>
+                           </div>
+
             </div>
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
@@ -70,40 +114,33 @@
                     <thead>
                                 <tr >
                                     <th style="text-align: center">no</th>
-                                    <th style="text-align: center">nama_Dokter</th>
-
-                                    <th style="text-align: center">Nip</th>
-                                    <th style="text-align: center">No Tlp</th>
-                                    {{-- <th>image</th> --}}
-                                    <th style="text-align: center">Alamat</th>
-                                    <th style="text-align: center">Image</th>
+                                    <th style="text-align: center">Nama</th>
+                                    <th style="text-align: center">Email</th>
+                                    <th style="text-align: center">Pesan</th>
                                     <th style="text-align: center">Aksi</th>
+
                                 </tr>
                     </thead>
                     <tbody>
-                                {{-- @foreach ($users as $user )
+                                {{-- @foreach ($pasiens as $pasien ) --}}
                                 <tr>
-                                    <td style="text-align: center">{{ $loop->iteration }}</td>
-                                    <td style="text-align: center">{{ $user->username }}</td>
 
-                                    <td style="text-align: center">{{ $user->email }}</td>
-                                    <td style="text-align: center">{{ $user->phone }}</td> --}}
                                     {{-- <td>
 
                                         <img src="{{ asset('images/'.$user->image) }}" height="100px" alt="">
                                     </td> --}}
 
-                                    {{-- <td style="text-align: center">{{ $user->status }}</td>
-                                    <td style="text-align: center">{{ $user->user->name }}</td>
-                                    <td style="text-align: center">
+
+
+                                    {{-- <td style="text-align: center">
 
                                         <a href="#" class="btn btn-success">Edit</a>
                                         <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
+                                    </td> --}}
 
                                 </tr>
 
-                                @endforeach --}}
+                                {{-- @endforeach --}}
                     </tbody>
 
 

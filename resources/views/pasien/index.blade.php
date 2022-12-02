@@ -45,10 +45,78 @@
         <div class="card">
           <div class="card-header">
             <div class="float-right">
-                <a href="{{ route('pasien.tambah_data') }}" class="btn btn-success">
+                {{-- <a href="{{ route('pasien.tambah_data') }}" class="btn btn-success">
                     <em class="fas fa-plus"></em>
                     Tambah Data
-                </a>
+                </a> --}}
+                <a href="" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+                    <em class="fas fa-plus"></em>
+                   Tambah Data
+                   </a>
+
+                           <!-- Modal -->
+                           <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                           <div class="modal-dialog" role="document">
+                               <div class="modal-content">
+                               <div class="modal-header">
+                                   <h5 class="modal-title" id="exampleModalLongTitle">Tambah Data Pasien</h5>
+                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                                   </button>
+                               </div>
+                               <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label for="inputClientCompany">Kode Pasien</label>
+                                    <input type="text" id="inputClientCompany" class="form-control">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="inputClientCompany">Nama Pasien</label>
+                                    <input type="text" id="inputClientCompany" class="form-control">
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="inputProjectLeader">Tanggal Lahir</label>
+                                    <input type="date" id="inputProjectLeader" class="form-control">
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="inputClientCompany">Nomor Telepon</label>
+                                    <input type="text" id="inputClientCompany" class="form-control">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="inputDescription">Keluhan</label>
+                                    <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="inputDescription">Alamat</label>
+                                    <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                                  </div>
+
+                                  <label for="inputClientCompany">Jenis Kelamin</label>
+                                  <div class="form-group clearfix">
+                                          <div class="icheck-success d-inline">
+                                            <input type="radio" name="r3" checked id="radioSuccess1">
+                                            <label for="radioSuccess1">Laki-Laki</label>
+                                          </div>
+                                          <div class="icheck-success d-inline">
+                                            <input type="radio" name="r3" id="radioSuccess2">
+                                            <label style="margin-left: 20px;" for="radioSuccess2">Perempuan</label>
+                                          </div>
+                                        </div>
+
+
+
+                               </div>
+                               <div class="modal-footer">
+                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                   <button type="button" class="btn btn-primary">Save changes</button>
+                               </div>
+                               </div>
+                           </div>
+                           </div>
+
             </div>
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
@@ -70,25 +138,27 @@
                     <thead>
                                 <tr >
                                     <th style="text-align: center">no</th>
-                                    <th style="text-align: center">Nama Pasien</th>
+                                    <th style="text-align: center">kode_P</th>
+                                    <th style="text-align: center">nama_P</th>
+                                    <th style="text-align: center">jenis_kel_p</th>
+                                    <th style="text-align: center">tgl_lahir_p</th>
+                                    <th style="text-align: center">telp_p</th>
+                                    <th style="text-align: center">alamat_p</th>
+                                    <th style="text-align: center">nama_kel_p</th>
                                     <th style="text-align: center">Aksi</th>
                                 </tr>
                     </thead>
                     <tbody>
-                                {{-- @foreach ($users as $user )
+                                @foreach ($pasiens as $pasien )
                                 <tr>
-                                    <td style="text-align: center">{{ $loop->iteration }}</td>
-                                    <td style="text-align: center">{{ $user->username }}</td>
 
-                                    <td style="text-align: center">{{ $user->email }}</td>
-                                    <td style="text-align: center">{{ $user->phone }}</td> --}}
                                     {{-- <td>
 
                                         <img src="{{ asset('images/'.$user->image) }}" height="100px" alt="">
                                     </td> --}}
 
-                                    {{-- <td style="text-align: center">{{ $user->status }}</td>
-                                    <td style="text-align: center">{{ $user->user->name }}</td>
+
+
                                     <td style="text-align: center">
 
                                         <a href="#" class="btn btn-success">Edit</a>
@@ -97,7 +167,7 @@
 
                                 </tr>
 
-                                @endforeach --}}
+                                @endforeach
                     </tbody>
 
 

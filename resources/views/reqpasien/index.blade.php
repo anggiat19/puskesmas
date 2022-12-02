@@ -71,6 +71,7 @@
                     <thead>
                                 <tr >
                                     <th style="text-align: center">no</th>
+                                    <th style="text-align: center">nama</th>
                                     <th style="text-align: center">tgl_daftar</th>
 
                                     <th style="text-align: center">no_antrian_id</th>

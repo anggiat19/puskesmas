@@ -13,9 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('pasiens', function (Blueprint $table) {
-            $table->unsignedBigInteger('pasien_id');
-            $table->foreign('pasien_id')->references('id')->on('reqpasiens');
+        Schema::create('karyawans', function (Blueprint $table) {
+            $table->id();
+            $table->string('nik', 255);
+            $table->string('nama_kry', 100);
+            $table->text('alamat');
+            $table->string('telepon', 100);
+            $table->enum('jenis_kelamin', ['L', 'P']);
+            $table->timestamps();
         });
     }
 
@@ -26,9 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('pasiens', function (Blueprint $table) {
-            $table->dropForeign('pasiens_pasien_id_foreign');
-            $table->dropColumn('pasien_id');
-        });
+        Schema::dropIfExists('karyawans');
     }
 };

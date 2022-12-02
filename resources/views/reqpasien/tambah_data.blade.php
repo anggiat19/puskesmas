@@ -36,12 +36,17 @@
                   <i class="fas fa-minus"></i></button>
               </div>
             </div>
+
             <div class="card-body">
+                <div class="form-group">
+                    <label for="inputClientCompany">Nama</label>
+                    <input type="text" id="inputClientCompany" class="form-control">
+                  </div>
               <div class="form-group">
                 <label for="inputName">Tanggal Daftar</label>
                 <input type="date" id="inputName" class="form-control">
               </div>
-            
+
               <div class="form-group">
                 <label for="inputStatus">Nomor Antrian</label>
                 <select class="form-control custom-select">
@@ -99,9 +104,9 @@
                   <option>Poli3</option>
                 </select>
               </div>
-              
+
                   <button type="submit" class="btn btn-primary">Submit</button>
-            
+
             </div>
             <!-- /.card-body -->
           </div>

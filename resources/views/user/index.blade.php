@@ -45,10 +45,62 @@
         <div class="card">
           <div class="card-header">
             <div class="float-right">
-                <a href="" class="btn btn-success">
+                <a href="" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
                     <em class="fas fa-plus"></em>
-                    Tambah Data
-                </a>
+                   Tambah Data
+                   </a>
+
+                           <!-- Modal -->
+                           <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                           <div class="modal-dialog" role="document">
+                               <div class="modal-content">
+                               <div class="modal-header">
+                                   <h5 class="modal-title" id="exampleModalLongTitle">Tambah Data User</h5>
+                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                                   </button>
+                               </div>
+                               <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label for="inputClientCompany">Nama</label>
+                                    <input type="text" id="inputClientCompany" class="form-control">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="inputClientCompany">Email</label>
+                                    <input type="email" id="inputClientCompany" class="form-control">
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="inputClientCompany">Nomor Telepon</label>
+                                    <input type="text" id="inputClientCompany" class="form-control">
+                                  </div>
+                                  <div class="form-group mb-0">
+                                    <label for="status">Status</label>
+                                    <select name="status" id="status" class="form-control" required>
+                                        <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>active
+                                        </option>
+                                        <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>inactive</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <label for="status">Role</label>
+                                    <select name="status" id="status" class="form-control" required>
+                                        <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>admin
+                                        </option>
+                                        <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>client</option>
+                                    </select>
+                                </div>
+
+
+                               </div>
+                               <div class="modal-footer">
+                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                   <button type="button" class="btn btn-primary">Save changes</button>
+                               </div>
+                               </div>
+                           </div>
+                           </div>
             </div>
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">

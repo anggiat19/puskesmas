@@ -33,32 +33,24 @@
 
           </li>
           <li class="nav-item ">
-            <a href="/reqpasien/index" class="nav-link {{ Request::is('reqpasien/index') ?'active':''}}">
+            <a href="/pasien/index" class="nav-link {{ Request::is('pasien/index') ?'active':''}}">
               <i class="nav-icon fas fa-notes-medical"></i>
-              <p>
-                ReqPasien
-                {{-- <span class="right badge badge-danger">New</span> --}}
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/diagnosa/index" class="nav-link {{ Request::is('diagnosa/index') ?'active':''}}">
-              <i class="nav-icon fas fa-diagnoses"></i>
-              <p>
-                Diagnosa
-                {{-- <span class="right badge badge-danger">New</span> --}}
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/pasien/index" class="nav-link  {{ Request::is('pasien/index') ?'active':''}}">
-              <i class="nav-icon fas fa-user-md	"></i>
               <p>
                 Pasien
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/pemeriksaan/index" class="nav-link {{ Request::is('pemeriksaan/index') ?'active':''}}">
+              <i class="nav-icon fas fa-diagnoses"></i>
+              <p>
+                Pemeriksaan
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item">
             <a href="/obat/index" class="nav-link  {{ Request::is('obat/index') ?'active':''}}">
               <i class="nav-icon fas fa-pills	"></i>
@@ -78,33 +70,43 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/poli/index" class="nav-link {{ Request::is('poli/index') ?'active':''}}">
+            <a href="/penyakit/index" class="nav-link {{ Request::is('penyakit/index') ?'active':''}}">
               <i class="nav-icon fas fa-weight	"></i>
               <p>
-                Poli
+                Penyakit
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/resep/index" class="nav-link  {{ Request::is('resep/index') ?'active':''}}">
+            <a href="/spesialis/index" class="nav-link  {{ Request::is('spesialis/index') ?'active':''}}">
               <i class="nav-icon fas fa-mortar-pestle	"></i>
               <p>
-                Resep
+                Spesialis
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
           </li>
         </li>
         <li class="nav-item">
-          <a href="/antrian/index" class="nav-link  {{ Request::is('antrian/index') ?'active':''}}">
+          <a href="/detailpenyakit/index" class="nav-link  {{ Request::is('detailpenyakit/index') ?'active':''}}">
             <i class="nav-icon fas fa-hourglass-end	"></i>
             <p>
-              Antrian
+              DetailPenyakit
               {{-- <span class="right badge badge-danger">New</span> --}}
             </p>
           </a>
         </li>
+        <li class="nav-item">
+            <a href="/karyawan/index" class="nav-link  {{ Request::is('karyawan/index') ?'active':''}}">
+              {{-- <i class="nav-icon fas fa-hourglass-end	"></i> --}}
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Karyawan
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
           {{-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>

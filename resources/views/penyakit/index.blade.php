@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','poli')
+@section('title','penyakit')
 @section('content')
 
 
@@ -30,12 +30,12 @@
         <div class="row mb-2">
 
           <div class="col-sm-6">
-            <h1>Poli</h1>
+            <h1>Penyakit</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Poli</li>
+              <li class="breadcrumb-item active">Penyakit</li>
             </ol>
           </div>
         </div>
@@ -45,10 +45,40 @@
         <div class="card">
           <div class="card-header">
             <div class="float-right">
-                <a href="{{ route('poli.tambah_data') }}" class="btn btn-success">
+                <a href="" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
                     <em class="fas fa-plus"></em>
-                    Tambah Data
-                </a>
+                   Tambah Data
+                   </a>
+
+                           <!-- Modal -->
+                           <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                           <div class="modal-dialog" role="document">
+                               <div class="modal-content">
+                               <div class="modal-header">
+                                   <h5 class="modal-title" id="exampleModalLongTitle">Tambah Data Penyakit</h5>
+                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                                   </button>
+                               </div>
+                               <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label for="inputClientCompany">Nama Penyakit</label>
+                                    <input type="text" id="inputClientCompany" class="form-control">
+                                  </div>
+
+
+
+
+
+                               </div>
+                               <div class="modal-footer">
+                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                   <button type="button" class="btn btn-primary">Save changes</button>
+                               </div>
+                               </div>
+                           </div>
+                           </div>
             </div>
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
@@ -70,9 +100,9 @@
                     <thead>
                                 <tr >
                                     <th style="text-align: center">no</th>
-                                    <th style="text-align: center">Kode Poli</th>
+                                    <th style="text-align: center">nama_penyakit</th>
 
-                                    <th style="text-align: center">Nama Poli</th>
+
                                     <th style="text-align: center">Aksi</th>
                                 </tr>
                     </thead>

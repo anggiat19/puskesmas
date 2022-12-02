@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dokters', function (Blueprint $table) {
+        Schema::create('pemeriksaans', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_d',255);
+            $table->string('no_periksa', 255);
+            $table->date('tgl_periksa');
 
-            $table->string('nama_d',255);
-            $table->enum('jenis_kel_d', ['L', 'P']);
-            $table->text('alamat_d');
-            $table->string('image',255);
+
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dokters');
+        Schema::dropIfExists('pemeriksaans');
     }
 };
