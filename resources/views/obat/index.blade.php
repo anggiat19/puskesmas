@@ -5,17 +5,7 @@
 
 
 
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
+
 
 
 
@@ -45,7 +35,7 @@
         <div class="card">
           <div class="card-header">
             <div class="float-right">
-                <form action="" method="POST" role="form" id="quickForm">
+                <form action="" method="POST" role="form" id="quickForm" enctype="multipart/form-data">
                     @csrf
                 <a href="" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
                     <em class="fas fa-plus"></em>
@@ -154,11 +144,12 @@
 
                                     <td style="text-align: center" class="project-state">
                                         <span
-                                            class="badge badge-{{ $obat->status ? 'success' : 'danger' }}">{{ $obat->status ? 'Tersedia' : 'Out Stock' }}</span>
+                                            class="badge badge-{{ $obat->status ? 'success' : 'danger' }}">{{ $obat->status ? '' : 'Out Stock' }}</span>
+
                                     </td>
-                                    <td>
+                                    <td style="text-align: center">
                                         {{-- <img src="{{ asset('storage/cover/'.$cover->image) }}" alt="" srcset="" width="200px"> --}}
-                                        <img src="{{ asset('images/'.$obat->image) }}" height="200px" alt="">
+                                        <img  src="{{ asset('images/'.$obat->image) }}" width="200" alt="">
                                     </td>
                                     {{-- <td>
 
