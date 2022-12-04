@@ -2,16 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pemeriksaan;
 use Illuminate\Http\Request;
 
 class PemeriksaanController extends Controller
 {
     public function index()
     {
-        // $dokters = Dokter::all();
-        // return view('dokter.index',['dokters'=>$dokters]);
-        // dd($users);
+        $pemeriksaans = Pemeriksaan::all();
+        return view('pemeriksaan.index',['pemeriksaans'=>$pemeriksaans]);
 
-        return view('pemeriksaan.index');
+     }
+
+
+
+     public function store(Request $request)
+
+     {
+         // $validated = $request->validate([
+         //     'name' => 'required|unique:categories|max:100',
+
+         // ]);
+         $pemeriksaans =Pemeriksaan::create($request->all());
+         return redirect('/pemeriksaan/index')->with('status', 'Pemeriksaan Added Successfully');
      }
 }

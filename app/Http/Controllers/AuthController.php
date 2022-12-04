@@ -121,6 +121,16 @@ class AuthController extends Controller
             return redirect('register');
 
         }
+        public function store(Request $request)
+
+        {
+            // $validated = $request->validate([
+            //     'name' => 'required|unique:categories|max:100',
+
+            // ]);
+            $users =Auth::create($request->all());
+            return redirect('/user/index')->with('status', 'User Added Successfully');
+        }
 
 
 

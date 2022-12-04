@@ -48,35 +48,38 @@ Route::get('/', [HomeController::class,'home']);
 Route::middleware('auth')->group(function(){
     Route::get('logout',[AuthController::class,'logout']);
     Route::get('dashboard',[DashboardController::class, 'index'])->middleware('only_admin');
+
     Route::get('user/index', [AuthController::class,'index']);
+    Route::post('user/index',[AuthController::class,'store']);
 
 
 
     Route::get('pasien/index', [PasienController::class,'index']);
-    Route::get('/pasien/tambah_data', ['as' => 'pasien.tambah_data', 'uses' => PasienController::class . '@tambah_data']);
+    Route::post('pasien/index',[PasienController::class,'store']);
 
 
     Route::get('dokter/index', [DokterController::class,'index']);
-    Route::get('/dokter/tambah_data', ['as' => 'dokter.tambah_data', 'uses' => DokterController::class . '@tambah_data']);
+
 
     Route::get('penyakit/index', [PenyakitController::class,'index']);
+    Route::post('penyakit/index',[PenyakitController::class,'store']);
 
 
 
     Route::get('spesialis/index', [SpesialisController::class,'index']);
+    Route::post('spesialis/index',[SpesialisController::class,'store']);
 
 
     Route::get('pemeriksaan/index', [PemeriksaanController::class,'index']);
+    Route::post('pemeriksaan/index',[PemeriksaanController::class,'store']);
 
 
     Route::get('detailpenyakit/index', [DetailPenyakitController::class,'index']);
 
 
 
-
-
     Route::get('karyawan/index', [KaryawanController::class,'index']);
-
+    Route::post('karyawan/index',[KaryawanController::class,'store']);
 
 
     Route::get('email/index', [EmailController::class,'index']);

@@ -2,16 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Penyakit;
 use Illuminate\Http\Request;
 
 class PenyakitController extends Controller
 {
     public function index()
     {
-        // $dokters = Dokter::all();
-        // return view('dokter.index',['dokters'=>$dokters]);
-        // dd($users);
+        $penyakits = Penyakit::all();
+        return view('penyakit.index',['penyakits'=>$penyakits]);
 
-        return view('penyakit.index');
+     }
+
+
+     public function store(Request $request)
+
+     {
+         // $validated = $request->validate([
+         //     'name' => 'required|unique:categories|max:100',
+
+         // ]);
+         $penyakits =Penyakit::create($request->all());
+         return redirect('/penyakit/index')->with('status', 'penyakit Added Successfully');
      }
 }

@@ -9,15 +9,11 @@ class PasienController extends Controller
 {
     public function index()
     {
-        $pasiens = Pasien::with('pasien')->get();
+        $pasiens = Pasien::all();
         return view('pasien.index',['pasiens'=>$pasiens]);
 
+     }
 
-        return view('pasien.index');
-     }
-     public function tambah_data(){
-        return view('pasien.tambah_data');
-     }
 
 
     //  public function index()
@@ -28,4 +24,15 @@ class PasienController extends Controller
 
     //     // return view('user.index');
     //  }
+
+    public function store(Request $request)
+
+    {
+        // $validated = $request->validate([
+        //     'name' => 'required|unique:categories|max:100',
+
+        // ]);
+        $pasiens =Pasien::create($request->all());
+        return redirect('/pasien/index')->with('status', 'Pasien Added Successfully');
+    }
 }

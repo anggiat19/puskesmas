@@ -45,6 +45,8 @@
         <div class="card">
           <div class="card-header">
             <div class="float-right">
+                {{-- <form action="" method="POST" role="form" id="quickForm">
+                    @csrf
                 <a href="" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
                     <em class="fas fa-plus"></em>
                    Tambah Data
@@ -64,31 +66,31 @@
 
                                 <div class="form-group">
                                     <label for="inputClientCompany">Nama</label>
-                                    <input type="text" id="inputClientCompany" class="form-control">
+                                    <input type="text" id="inputClientCompany" class="form-control" name="username">
                                   </div>
                                   <div class="form-group">
                                     <label for="inputClientCompany">Email</label>
-                                    <input type="email" id="inputClientCompany" class="form-control">
+                                    <input type="email" id="inputClientCompany" class="form-control" name="email">
                                   </div>
 
                                   <div class="form-group">
                                     <label for="inputClientCompany">Nomor Telepon</label>
-                                    <input type="text" id="inputClientCompany" class="form-control">
+                                    <input type="text" id="inputClientCompany" class="form-control" name="phone"                                                                                                                                                                                                                                                                                    >
                                   </div>
                                   <div class="form-group mb-0">
                                     <label for="status">Status</label>
                                     <select name="status" id="status" class="form-control" required>
-                                        <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>active
+                                        <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>active
                                         </option>
-                                        <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>inactive</option>
+                                        <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>inactive</option>
                                     </select>
                                 </div>
                                 <div class="form-group mb-0">
                                     <label for="status">Role</label>
-                                    <select name="status" id="status" class="form-control" required>
+                                    <select name="role_id" id="status" class="form-control" required>
                                         <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>admin
                                         </option>
-                                        <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>client</option>
+                                        <option value="2" {{ old('status') == '2' ? 'selected' : '' }}>client</option>
                                     </select>
                                 </div>
 
@@ -101,6 +103,7 @@
                                </div>
                            </div>
                            </div>
+                </form> --}}
             </div>
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">

@@ -46,6 +46,8 @@
           <div class="card-header">
             <div class="float-right">
 
+                <form action="" method="POST" role="form" id="quickForm">
+                    @csrf
                 <a href="" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
                     <em class="fas fa-plus"></em>
                    Tambah Data
@@ -65,11 +67,11 @@
 
                                 <div class="form-group">
                                     <label for="inputClientCompany">No Periksa</label>
-                                    <input type="text" id="inputClientCompany" class="form-control">
+                                    <input type="text" id="inputClientCompany" class="form-control" name="no_periksa">
                                   </div>
                                   <div class="form-group">
                                     <label for="inputProjectLeader">Tanggal Periksa</label>
-                                    <input type="date" id="inputProjectLeader" class="form-control">
+                                    <input type="date" id="inputProjectLeader" class="form-control" name="tgl_periksa">
                                   </div>
 
 
@@ -78,11 +80,12 @@
                                </div>
                                <div class="modal-footer">
                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                   <button type="button" class="btn btn-primary">Save changes</button>
+                                   <button type="submit" class="btn btn-primary">Save changes</button>
                                </div>
                                </div>
                            </div>
                            </div>
+                </form>
             </div>
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">

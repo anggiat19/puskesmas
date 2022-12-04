@@ -45,6 +45,8 @@
         <div class="card">
           <div class="card-header">
             <div class="float-right">
+                <form action="" method="POST" role="form" id="quickForm">
+                    @csrf
                 <a href="" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
                     <em class="fas fa-plus"></em>
                    Tambah Data
@@ -64,7 +66,7 @@
 
                                 <div class="form-group">
                                     <label for="inputClientCompany">Nama Penyakit</label>
-                                    <input type="text" id="inputClientCompany" class="form-control">
+                                    <input type="text" id="inputClientCompany" class="form-control" name="nama_penyakit">
                                   </div>
 
 
@@ -74,11 +76,12 @@
                                </div>
                                <div class="modal-footer">
                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                   <button type="button" class="btn btn-primary">Save changes</button>
+                                   <button type="submit" class="btn btn-primary">Save changes</button>
                                </div>
                                </div>
                            </div>
                            </div>
+                </form>
             </div>
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
@@ -107,20 +110,17 @@
                                 </tr>
                     </thead>
                     <tbody>
-                                {{-- @foreach ($users as $user )
+                                @foreach ($penyakits as $penyakit )
                                 <tr>
                                     <td style="text-align: center">{{ $loop->iteration }}</td>
-                                    <td style="text-align: center">{{ $user->username }}</td>
+                                    <td style="text-align: center">{{ $penyakit->nama_penyakit }}</td>
 
-                                    <td style="text-align: center">{{ $user->email }}</td>
-                                    <td style="text-align: center">{{ $user->phone }}</td> --}}
                                     {{-- <td>
 
                                         <img src="{{ asset('images/'.$user->image) }}" height="100px" alt="">
                                     </td> --}}
 
-                                    {{-- <td style="text-align: center">{{ $user->status }}</td>
-                                    <td style="text-align: center">{{ $user->user->name }}</td>
+
                                     <td style="text-align: center">
 
                                         <a href="#" class="btn btn-success">Edit</a>
@@ -129,7 +129,7 @@
 
                                 </tr>
 
-                                @endforeach --}}
+                                @endforeach
                     </tbody>
 
 

@@ -9,14 +9,9 @@ class Pasien extends Model
 {
     use HasFactory;
 
-     /**
-     * Get the user that owns the User
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function pasien()
-    {
-        return $this->belongsTo(Reqpasien::class, 'pasien_id', 'id');
 
-    }
+    protected $fillable = [
+        'kode_p','nama_p','jenis_kel_p','tgl_lahir_p','telp_p','alamat_p','nama_kel_p'
+    ];
+
 }
