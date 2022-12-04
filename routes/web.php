@@ -86,13 +86,8 @@ Route::middleware('auth')->group(function(){
 
 
 
-
-
-
-
-
-
     Route::get('obat/index', [ObatController::class,'index']);
+    Route::post('obat/index',[ObatController::class,'store']);
 
 
 

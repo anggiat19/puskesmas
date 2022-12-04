@@ -132,6 +132,7 @@
                                     <th style="text-align: center">jenis_kelamin_dokter</th>
                                     {{-- <th>image</th> --}}
                                     <th style="text-align: center">Alamat_dokter</th>
+                                    <th style="text-align: center">Spesialis_id</th>
                                     <th style="text-align: center">Image</th>
                                     <th style="text-align: center">Aksi</th>
                                 </tr>

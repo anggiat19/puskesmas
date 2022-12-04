@@ -45,6 +45,8 @@
         <div class="card">
           <div class="card-header">
             <div class="float-right">
+                <form action="" method="POST" role="form" id="quickForm">
+                    @csrf
                 <a href="" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
                     <em class="fas fa-plus"></em>
                    Tambah Data
@@ -64,22 +66,23 @@
 
                                 <div class="form-group">
                                     <label for="inputClientCompany">Kode Obat</label>
-                                    <input type="text" id="inputClientCompany" class="form-control">
+                                    <input type="text" id="inputClientCompany" class="form-control" name="kode_obat">
                                   </div>
                                   <div class="form-group">
                                     <label for="inputClientCompany">Nama Obat</label>
-                                    <input type="text" id="inputClientCompany" class="form-control">
+                                    <input type="text" id="inputClientCompany" class="form-control" name="nm_obat">
                                   </div>
 
 
                                   <div class="form-group">
                                     <label for="inputClientCompany">Satuan</label>
-                                    <input type="text" id="inputClientCompany" class="form-control">
+                                    <input type="text" id="inputClientCompany" class="form-control" name="satuan">
                                   </div>
 
+
                                   <div class="form-group">
-                                    <label for="inputClientCompany">Stok</label>
-                                    <input type="text" id="inputClientCompany" class="form-control">
+                                    <label for="inputDescription">Deskripsi Obat</label>
+                                    <textarea id="inputDescription" class="form-control" rows="4" name="stok"></textarea>
                                   </div>
 
                                   <div class="form-group mb-0">
@@ -93,7 +96,7 @@
 
                                 <div class="form-group">
                                     <label for="inputClientCompany">image</label>
-                                    <input type="file" id="inputClientCompany" class="form-control">
+                                    <input type="file" id="inputClientCompany" class="form-control" name="image">
                                   </div>
 
 
@@ -101,11 +104,12 @@
                                </div>
                                <div class="modal-footer">
                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                   <button type="button" class="btn btn-primary">Save changes</button>
+                                   <button type="submit" class="btn btn-primary">Save changes</button>
                                </div>
                                </div>
                            </div>
                            </div>
+                </form>
             </div>
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
@@ -132,27 +136,37 @@
                                     <th style="text-align: center">nama_obat</th>
                                     <th style="text-align: center">satuan</th>
                                     {{-- <th>image</th> --}}
-                                    <th style="text-align: center">stok</th>
+                                    <th style="text-align: center">Deskripsi Obat</th>
                                     <th style="text-align: center">status</th>
                                     <th style="text-align: center">image</th>
                                     <th style="text-align: center">Aksi</th>
                                 </tr>
                     </thead>
                     <tbody>
-                                {{-- @foreach ($users as $user )
+                                @foreach ($obats as $obat )
                                 <tr>
                                     <td style="text-align: center">{{ $loop->iteration }}</td>
-                                    <td style="text-align: center">{{ $user->username }}</td>
+                                    <td style="text-align: center">{{ $obat->kode_obat }}</td>
 
-                                    <td style="text-align: center">{{ $user->email }}</td>
-                                    <td style="text-align: center">{{ $user->phone }}</td> --}}
+                                    <td style="text-align: center">{{ $obat->nm_obat }}</td>
+                                    <td style="text-align: center">{{ $obat->satuan }}</td>
+                                    <td style="text-align: center">{{ $obat->stok }}</td>
+
+                                    <td style="text-align: center" class="project-state">
+                                        <span
+                                            class="badge badge-{{ $obat->status ? 'success' : 'danger' }}">{{ $obat->status ? 'Tersedia' : 'Out Stock' }}</span>
+                                    </td>
+                                    <td>
+                                        {{-- <img src="{{ asset('storage/cover/'.$cover->image) }}" alt="" srcset="" width="200px"> --}}
+                                        <img src="{{ asset('images/'.$obat->image) }}" height="200px" alt="">
+                                    </td>
                                     {{-- <td>
 
                                         <img src="{{ asset('images/'.$user->image) }}" height="100px" alt="">
                                     </td> --}}
 
-                                    {{-- <td style="text-align: center">{{ $user->status }}</td>
-                                    <td style="text-align: center">{{ $user->user->name }}</td>
+                                     {{-- <td style="text-align: center">{{ $user->status }}</td>
+                                    <td style="text-align: center">{{ $user->user->name }}</td> --}}
                                     <td style="text-align: center">
 
                                         <a href="#" class="btn btn-success">Edit</a>
@@ -161,7 +175,7 @@
 
                                 </tr>
 
-                                @endforeach --}}
+                                @endforeach
                     </tbody>
 
 

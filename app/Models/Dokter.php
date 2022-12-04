@@ -10,10 +10,10 @@ class Dokter extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama_dokter',
-        'nip',
-        'telepon',
-        'alamat',
+        'kode_d',
+        'nama_d',
+        'jenis_kel_d',
+        'alamat_d',
         'image',
 
     ];
