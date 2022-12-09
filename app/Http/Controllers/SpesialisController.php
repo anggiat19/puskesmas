@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Spesialis;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class SpesialisController extends Controller
 {
@@ -36,5 +37,23 @@ class SpesialisController extends Controller
         // ]);
         $spesialis =Spesialis::create($request->all());
         return redirect('/spesialis/index')->with('status', 'Spesialis Added Successfully');
+    }
+
+    public function delete($id)
+    {
+        $spesialis = Spesialis::findOrFail($id);
+        return view('spesialis.delete',['spesialis'=>$spesialis]);
+    }
+
+    public function destroy($id)
+    {
+       $deletespesialis = Spesialis::findOrFail($id);
+       $deletespesialis->delete();
+
+        if($deletespesialis){
+            Session::flash('status',' delete success');
+            // Session::flash('message','delete pasien succes');
+        }
+       return redirect('/spesialis/index');
     }
 }

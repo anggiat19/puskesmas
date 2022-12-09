@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class KaryawanController extends Controller
 {
@@ -25,6 +26,24 @@ class KaryawanController extends Controller
          // ]);
          $karyawans =Karyawan::create($request->all());
          return redirect('/karyawan/index')->with('status', 'Karyawan Add Successfully');
+     }
+
+     public function delete($id)
+     {
+         $karyawans = Karyawan::findOrFail($id);
+         return view('karyawan.delete',['karyawans'=>$karyawans]);
+     }
+
+     public function destroy($id)
+     {
+        $deletekaryawan = Karyawan::findOrFail($id);
+        $deletekaryawan->delete();
+
+         if($deletekaryawan){
+             Session::flash('status',' delete success');
+             // Session::flash('message','delete pasien succes');
+         }
+        return redirect('/karyawan/index');
      }
 
 }

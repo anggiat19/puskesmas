@@ -146,7 +146,7 @@
                                     <td style="text-align: center">
 
                                         <a href="#" class="btn btn-success">Edit</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
+                                        <a href="/karyawan/delete/{{ $karyawan->id }}" class="btn btn-danger">Delete</a>
                                     </td>
 
                                 </tr>

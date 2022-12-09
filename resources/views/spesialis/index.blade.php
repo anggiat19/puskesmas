@@ -119,7 +119,7 @@
                                     <td style="text-align: center">
 
                                         <a href="#" class="btn btn-success">Edit</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
+                                        <a href="/spesialis/delete/{{ $spesiali->id }}" class="btn btn-danger">Delete</a>
                                     </td>
 
                                 </tr>

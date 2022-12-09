@@ -78,6 +78,8 @@ Route::middleware('auth')->group(function(){
 
     Route::get('spesialis/index', [SpesialisController::class,'index']);
     Route::post('spesialis/index',[SpesialisController::class,'store']);
+    Route::get('spesialis/delete/{id}',[SpesialisController::class,'delete']);
+    Route::delete('spesialis/destroy/{id}',[SpesialisController::class,'destroy']);
 
 
     Route::get('pemeriksaan/index', [PemeriksaanController::class,'index']);
@@ -90,6 +92,8 @@ Route::middleware('auth')->group(function(){
 
     Route::get('karyawan/index', [KaryawanController::class,'index']);
     Route::post('karyawan/index',[KaryawanController::class,'store']);
+    Route::get('karyawan/delete/{id}',[KaryawanController::class,'delete']);
+    Route::delete('karyawan/destroy/{id}',[KaryawanController::class,'destroy']);
 
 
 
