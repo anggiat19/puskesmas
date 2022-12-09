@@ -71,7 +71,7 @@
             </div>
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" name="q" type="search" placeholder="Search"
+                    <input class="form-control form-control-navbar" name="search" type="search" placeholder="Search"
                         aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-navbar" type="submit">
@@ -110,7 +110,7 @@
                                     <td style="text-align: center">
 
                                         <a href="#" class="btn btn-success">Edit</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
+                                        <a href="/penyakit/delete/{{ $penyakit->id }}" class="btn btn-danger">Delete</a>
                                     </td>
 
                                 </tr>
@@ -120,6 +120,7 @@
 
 
                             </table>
+                            {{ $penyakits->withQueryString()->links() }}
             </div>
           </div>
           <!-- /.card-body -->

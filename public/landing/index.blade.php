@@ -93,7 +93,7 @@ https://templatemo.com/tm-540-lava-landing-page
                         data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
                         <h1>Simple App that we <em>CREATE</em></h1>
                         <p>Lava <a href="#">HTML landing page</a> template is provided by <a href="#">TemplateMo</a>.
-                           You can modify and use it for your commercial websites for free of charge. This template is last updated on 29 Oct 2019.</p> 
+                           You can modify and use it for your commercial websites for free of charge. This template is last updated on 29 Oct 2019.</p>
                         <a href="#about" class="main-button-slider">KNOW US BETTER</a>
                     </div>
                 </div>
@@ -301,7 +301,9 @@ https://templatemo.com/tm-540-lava-landing-page
                     <!-- ***** Contact Form Start ***** -->
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="contact-form">
-                            <form id="contact" action="" method="post">
+
+                            <form id="contact" action="" method="post" enctype="multipart/form-data">
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-6 col-sm-12">
                                         <fieldset>
@@ -317,7 +319,7 @@ https://templatemo.com/tm-540-lava-landing-page
                                     </div>
                                     <div class="col-lg-12">
                                         <fieldset>
-                                            <textarea name="message" rows="6" id="message" placeholder="Your Message"
+                                            <textarea name="pesan" rows="6" id="message" placeholder="Your Message"
                                                 required="" style="background-color: rgba(250,250,250,0.3);"></textarea>
                                         </fieldset>
                                     </div>

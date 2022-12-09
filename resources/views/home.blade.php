@@ -302,7 +302,8 @@ https://templatemo.com/tm-540-lava-landing-page
                     <!-- ***** Contact Form Start ***** -->
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="contact-form">
-                            <form id="contact" action="" method="post">
+                            <form id="contact" action="" method="POST" role="form">
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-6 col-sm-12">
                                         <fieldset>
@@ -312,13 +313,13 @@ https://templatemo.com/tm-540-lava-landing-page
                                     </div>
                                     <div class="col-md-6 col-sm-12">
                                         <fieldset>
-                                            <input name="email" type="text" id="email" placeholder="E-Mail Address"
+                                            <input name="email" type="email" id="email" placeholder="E-Mail Address"
                                                 required="" style="background-color: rgba(250,250,250,0.3);">
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-12">
                                         <fieldset>
-                                            <textarea name="message" rows="6" id="message" placeholder="Your Message"
+                                            <textarea name="pesan" rows="6" id="message" placeholder="Your Message"
                                                 required="" style="background-color: rgba(250,250,250,0.3);"></textarea>
                                         </fieldset>
                                     </div>

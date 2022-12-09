@@ -38,6 +38,8 @@
                     <em class="fas fa-plus"></em>
                     Tambah Data
                 </a> --}}
+                <form action="" method="POST" role="form" id="quickForm">
+                    @csrf
                 <a href="" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
                     <em class="fas fa-plus"></em>
                    Tambah Data
@@ -58,17 +60,17 @@
 
                                   <div class="form-group">
                                     <label for="inputClientCompany">Nama </label>
-                                    <input type="text" id="inputClientCompany" class="form-control">
+                                    <input type="text" id="inputClientCompany" class="form-control" name="name">
                                   </div>
 
 
                                   <div class="form-group">
                                     <label for="inputClientCompany">Email</label>
-                                    <input type="email" id="inputClientCompany" class="form-control">
+                                    <input type="email" id="inputClientCompany" class="form-control" name="email">
                                   </div>
                                   <div class="form-group">
                                     <label for="inputDescription">Pesan</label>
-                                    <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                                    <textarea id="inputDescription" class="form-control" rows="4" name="pesan"></textarea>
                                   </div>
 \
 
@@ -76,16 +78,17 @@
                                </div>
                                <div class="modal-footer">
                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                   <button type="button" class="btn btn-primary">Save changes</button>
+                                   <button type="submit" class="btn btn-primary">Save changes</button>
                                </div>
                                </div>
                            </div>
                            </div>
+                </form>
 
             </div>
-            <form class="form-inline ml-3">
+            <form class="form-inline ml-3" method="GET" action="/email/index">
                 <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" name="q" type="search" placeholder="Search"
+                    <input class="form-control form-control-navbar" name="search" type="search" placeholder="Search"
                         aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-navbar" type="submit">
@@ -99,7 +102,7 @@
           <div class="card-body">
             <div id="jsGrid1">
 
-                <table class="table table-bordered " >
+                <table class="table table-bordered " id="table-data" >
                     <thead>
                                 <tr >
                                     <th style="text-align: center">no</th>
@@ -111,7 +114,7 @@
                                 </tr>
                     </thead>
                     <tbody>
-                                {{-- @foreach ($pasiens as $pasien ) --}}
+                                @foreach ($emails as $email )
                                 <tr>
 
                                     {{-- <td>
@@ -119,21 +122,27 @@
                                         <img src="{{ asset('images/'.$user->image) }}" height="100px" alt="">
                                     </td> --}}
 
+                                    <td style="text-align: center">{{ $loop->iteration }}</td>
+                                    <td style="text-align: center">{{ $email->name }}</td>
+                                    <td style="text-align: center">{{ $email->email }}</td>
+                                    <td style="text-align: center">{{ $email->pesan }}</td>
 
 
-                                    {{-- <td style="text-align: center">
+
+                                    <td style="text-align: center">
 
                                         <a href="#" class="btn btn-success">Edit</a>
                                         <a href="#" class="btn btn-danger">Delete</a>
-                                    </td> --}}
+                                    </td>
 
                                 </tr>
 
-                                {{-- @endforeach --}}
+                                @endforeach
                     </tbody>
 
 
                             </table>
+                            {{ $emails->withQueryString()->links() }}
             </div>
           </div>
           <!-- /.card-body -->

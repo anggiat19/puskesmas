@@ -10,6 +10,6 @@ class Obat extends Model
     use HasFactory;
 
     protected $fillable = [
-        'kode_obat','nm_obat','satuan','stok','status','image'
+        'kode_obat','nm_obat','satuan','harga','takaran','stok','status','image'
     ];
 }

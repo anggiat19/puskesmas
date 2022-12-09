@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 
 class KaryawanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $karyawans = Karyawan::all();
+        $search = $request->search;
+        $karyawans = Karyawan::where('nama_kry','LIKE','%'.$search.'%')
+        ->paginate(5);
         return view('karyawan.index',['karyawans'=>$karyawans]);
 
      }

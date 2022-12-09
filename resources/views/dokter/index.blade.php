@@ -37,6 +37,8 @@
                     <em class="fas fa-plus"></em>
                     Tambah Data
                 </a> --}}
+                <form action="" method="POST" role="form" id="quickForm" enctype="multipart/form-data">
+                  @csrf
                 <a href="" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
                     <em class="fas fa-plus"></em>
                    Tambah Data
@@ -56,47 +58,66 @@
 
                                 <div class="form-group">
                                     <label for="inputClientCompany">Kode Dokter</label>
-                                    <input type="text" id="inputClientCompany" class="form-control">
+                                    <input type="text" id="inputClientCompany" class="form-control" name="kode_d">
                                   </div>
                                   <div class="form-group">
                                     <label for="inputClientCompany">Nama Dokter</label>
-                                    <input type="text" id="inputClientCompany" class="form-control">
+                                    <input type="text" id="inputClientCompany" class="form-control" name="nama_d">
                                   </div>
 
                                   <div class="form-group">
                                     <label for="inputDescription">Alamat</label>
-                                    <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                                    <textarea id="inputDescription" class="form-control" rows="4" name="alamat_d"></textarea>
                                   </div>
 
-                                  <label for="inputClientCompany">Jenis Kelamin</label>
-                                  <div class="form-group clearfix">
-                                          <div class="icheck-success d-inline">
-                                            <input type="radio" name="r3" checked id="radioSuccess1">
-                                            <label for="radioSuccess1">Laki-Laki</label>
-                                          </div>
-                                          <div class="icheck-success d-inline">
-                                            <input type="radio" name="r3" id="radioSuccess2">
-                                            <label style="margin-left: 20px;" for="radioSuccess2">Perempuan</label>
-                                          </div>
-                                        </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="jenis_kelamin">Jenis Kelamin<span
+                                                style="color:red">*</span></label>
+                                        <select name="jenis_kel_d" class="form-control" id="jenis_kelamin"
+                                            required>
+                                            <option value="L" {{ old('jenis_kelamin') == 'L' ? 'selected' : '' }}>
+                                                Laki-Laki
+                                            </option>
+                                            <option value="P" {{ old('jenis_kelamin') == 'P' ? 'selected' : '' }}>
+                                                Perempuan
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                        <div class="form-group">
+                                          <label for="dokter_id">Spesialis Id<span style="color:red">*</span></label>
+                                          <select name="spesialis_id" class="form-control" id="dokter_id" required
+                                              autofocus>
+                                              <option value="">Select Spesialis</option>
+                                              @forelse ($spesialis as $spesial)
+                                                  <option value="{{ $spesial->id }}"
+                                                      {{ $spesial->id == old('dokter_id') ? 'selected' : '' }}>
+                                                      {{ $spesial->nama_spesialis }}</option>
+                                              @empty
+                                                  <option value="" disabled>Tidak ada data</option>
+                                              @endforelse
+                                          </select>
+                                      </div>
                                         <div class="form-group">
                                             <label for="inputClientCompany">image</label>
-                                            <input type="file" id="inputClientCompany" class="form-control">
+                                            <input type="file" id="inputClientCompany" class="form-control" name="image">
                                           </div>
 
 
                                </div>
                                <div class="modal-footer">
                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                   <button type="button" class="btn btn-primary">Save changes</button>
+                                   <button type="submit" class="btn btn-primary">Save changes</button>
                                </div>
                                </div>
                            </div>
                            </div>
+                </form>
             </div>
-            <form class="form-inline ml-3">
+            <form class="form-inline ml-3" method="GET" action="/dokter/index">
                 <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" name="q" type="search" placeholder="Search"
+                    <input class="form-control form-control-navbar" name="search" type="search" placeholder="Search"
                         aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-navbar" type="submit">
@@ -126,33 +147,40 @@
                                 </tr>
                     </thead>
                     <tbody>
-                                {{-- @foreach ($users as $user )
+                                @foreach ($dokters as $dokter )
                                 <tr>
                                     <td style="text-align: center">{{ $loop->iteration }}</td>
-                                    <td style="text-align: center">{{ $user->username }}</td>
+                                    <td style="text-align: center">{{ $dokter->kode_d }}</td>
 
-                                    <td style="text-align: center">{{ $user->email }}</td>
-                                    <td style="text-align: center">{{ $user->phone }}</td> --}}
+                                    <td style="text-align: center">{{ $dokter->nama_d }}</td>
+                                    <td style="text-align: center">{{ $dokter->jenis_kel_d }}</td>
+                                    <td style="text-align: center">{{ $dokter->alamat_d }}</td>
+                                    <td style="text-align: center">{{ $dokter->spesialis->nama_spesialis }}</td>
+                                    <td style="text-align: center">
+                                      {{-- <img src="{{ asset('storage/cover/'.$cover->image) }}" alt="" srcset="" width="200px"> --}}
+                                      <img  src="{{ asset('images/'.$dokter->image) }}" width="200" alt="">
+                                  </td>
                                     {{-- <td>
 
                                         <img src="{{ asset('images/'.$user->image) }}" height="100px" alt="">
                                     </td> --}}
 
-                                    {{-- <td style="text-align: center">{{ $user->status }}</td>
-                                    <td style="text-align: center">{{ $user->user->name }}</td>
+
+                                    {{-- <td style="text-align: center">{{ $user->user->name }}</td> --}}
                                     <td style="text-align: center">
 
                                         <a href="#" class="btn btn-success">Edit</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
+                                        <a href="/dokter/delete/{{ $dokter->id }}" class="btn btn-danger">Delete</a>
                                     </td>
 
                                 </tr>
 
-                                @endforeach --}}
+                                @endforeach
                     </tbody>
 
 
                             </table>
+                            {{ $dokters->withQueryString()->links() }}
             </div>
           </div>
           <!-- /.card-body -->

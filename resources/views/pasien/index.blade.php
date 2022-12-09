@@ -30,6 +30,22 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
+    <div class="row">
+
+        <div class="col-3">
+            @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+            @if(Session::has('status'))
+                    {{-- <div class="alert alert-danger" >
+                        {{ Session::get('message') }}
+                    </div> --}}
+                    @endif
+        </div>
+    </div>
+
     <section class="content">
         <div class="card">
           <div class="card-header">
@@ -38,6 +54,7 @@
                     <em class="fas fa-plus"></em>
                     Tambah Data
                 </a> --}}
+
                 @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -47,6 +64,7 @@
                     </ul>
                 </div>
             @endif
+
                 <form action="" method="POST" role="form" id="quickForm">
                     @csrf
                 <a href="" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
@@ -137,7 +155,7 @@
             </div>
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" name="q" type="search" placeholder="Search"
+                    <input class="form-control form-control-navbar" name="search" type="search" placeholder="Search"
                         aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-navbar" type="submit">
@@ -150,11 +168,7 @@
           <!-- /.card-header -->
           <div class="card-body">
             <div id="jsGrid1">
-                @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
+
 
                 <table class="table table-bordered " >
                     <thead>
@@ -186,7 +200,7 @@
                                     <td style="text-align: center">
 
                                         <a href="#" class="btn btn-success">Edit</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
+                                        <a href="/pasien/delete/{{ $pasien->id }}" class="btn btn-danger">Delete</a>
                                     </td>
 
                                 </tr>
@@ -196,6 +210,7 @@
 
 
                             </table>
+                            {{ $pasiens->withQueryString()->links() }}
             </div>
           </div>
           <!-- /.card-body -->

@@ -12,9 +12,16 @@ use Illuminate\Support\Facades\Session;
 class AuthController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
+
+
     {
-        $users = User::with('user')->get();
+        $search = $request->search;
+        $users = User::where('username','LIKE','%'.$search.'%')
+        ->orwhereHas('user',function($query)use($search){
+            $query->where('name','LIKE','%'.$search.'%');
+        })
+        ->paginate(5);
         return view('user.index',['users'=>$users]);
         // dd($users);
 

@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 
 class SpesialisController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $spesialis = Spesialis::all();
+        $search = $request->search;
+        $spesialis = Spesialis::where('nama_spesialis','LIKE','%'.$search.'%')
+        ->paginate(5);
         return view('spesialis.index',['spesialis'=>$spesialis]);
 
      }

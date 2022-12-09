@@ -101,20 +101,21 @@
                                 </tr>
                     </thead>
                     <tbody>
-                                {{-- @foreach ($users as $user )
+                                @foreach ($detailpenyakits as $detailpenyakit )
                                 <tr>
                                     <td style="text-align: center">{{ $loop->iteration }}</td>
-                                    <td style="text-align: center">{{ $user->username }}</td>
+                                    <td style="text-align: center">{{ $detailpenyakit->no_urut }}</td>
+                                    <td style="text-align: center">{{ $detailpenyakit->kondisi_pasien }}</td>
 
-                                    <td style="text-align: center">{{ $user->email }}</td>
-                                    <td style="text-align: center">{{ $user->phone }}</td> --}}
+                                    <td style="text-align: center">{{ $detailpenyakit->pemeriksa->no_periksa}}</td>
+                                    <td style="text-align: center">{{ $detailpenyakit->penyakit->nama_penyakit }}</td>
                                     {{-- <td>
 
                                         <img src="{{ asset('images/'.$user->image) }}" height="100px" alt="">
                                     </td> --}}
 
-                                    {{-- <td style="text-align: center">{{ $user->status }}</td>
-                                    <td style="text-align: center">{{ $user->user->name }}</td>
+                                    <td style="text-align: center">{{ $detailpenyakit->obat->nm_obat }}</td>
+
                                     <td style="text-align: center">
 
                                         <a href="#" class="btn btn-success">Edit</a>
@@ -123,7 +124,7 @@
 
                                 </tr>
 
-                                @endforeach --}}
+                                @endforeach
                     </tbody>
 
 

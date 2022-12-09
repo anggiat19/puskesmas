@@ -1,15 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Session;
 use App\Models\Obat;
 use Illuminate\Http\Request;
 
 class ObatController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $obats = Obat::all();
+        $search = $request->search;
+
+        $obats = Obat::where('nm_obat','LIKE','%'.$search.'%')
+        // ->orWhere('email',$search)
+        // ->orWhere('pesan','LIKE','%'.$search.'%')
+        ->paginate(5);
         return view('obat.index',['obats'=>$obats]);
 
      }
@@ -44,10 +49,31 @@ class ObatController extends Controller
             'kode_obat' => $request['kode_obat'],
             'nm_obat'=>$request['nm_obat'],
             'satuan'=>$request['satuan'],
+            'harga'=>$request['harga'],
+            'takaran'=>$request['takaran'],
             'stok'=>$request['stok'],
             'status'=>$request['status'],
             'image' => $newName
         ]);
         return redirect('/obat/index')->with('status', 'Obat Added Successfully');
+    }
+
+
+    public function delete($id)
+    {
+        $obats = Obat::findOrFail($id);
+        return view('obat.delete',['obats'=>$obats]);
+    }
+
+    public function destroy($id)
+    {
+       $deleteobat = Obat::findOrFail($id);
+       $deleteobat->delete();
+
+        if($deleteobat){
+            Session::flash('status',' delete success');
+            // Session::flash('message','delete pasien succes');
+        }
+       return redirect('/obat/index');
     }
 }

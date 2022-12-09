@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pasien;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 class PasienController extends Controller
 {
-    public function index()
+    public function index(Request $request)
+
     {
-        $pasiens = Pasien::all();
+        $search = $request->search;
+        $pasiens = Pasien::where('nama_p','LIKE','%'.$search.'%')
+        ->paginate(5);
+
         return view('pasien.index',['pasiens'=>$pasiens]);
 
      }
@@ -34,5 +39,24 @@ class PasienController extends Controller
         // ]);
         $pasiens =Pasien::create($request->all());
         return redirect('/pasien/index')->with('status', 'Pasien Added Successfully');
+    }
+
+
+    public function delete($id)
+    {
+        $pasiens = Pasien::findOrFail($id);
+        return view('pasien.delete',['pasiens'=>$pasiens]);
+    }
+
+    public function destroy($id)
+    {
+       $deletepasien = Pasien::findOrFail($id);
+       $deletepasien->delete();
+
+        if($deletepasien){
+            Session::flash('status',' delete success');
+            Session::flash('message','delete pasien succes');
+        }
+       return redirect('/pasien/index');
     }
 }

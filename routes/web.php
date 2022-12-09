@@ -38,7 +38,8 @@ use App\Http\Controllers\DetailPenyakitController;
 // });
 
 
-Route::get('/', [HomeController::class,'home']);
+Route::get('/', [EmailController::class,'home']);
+
     Route::get('login', [AuthController::class,'login'])->name('login');
     Route::post('login',[AuthController::class,'authenticationg']);
     Route::get('register', [AuthController::class,'register']);
@@ -56,15 +57,24 @@ Route::middleware('auth')->group(function(){
 
     Route::get('pasien/index', [PasienController::class,'index']);
     Route::post('pasien/index',[PasienController::class,'store']);
+    Route::get('pasien/delete/{id}',[PasienController::class,'delete']);
+    Route::delete('pasien/destroy/{id}',[PasienController::class,'destroy']);
+
 
 
     Route::get('dokter/index', [DokterController::class,'index']);
+    Route::post('dokter/index',[DokterController::class,'store']);
+    Route::get('dokter/delete/{id}',[DokterController::class,'delete']);
+    Route::delete('dokter/destroy/{id}',[DokterController::class,'destroy']);
 
 
     Route::get('penyakit/index', [PenyakitController::class,'index']);
     Route::post('penyakit/index',[PenyakitController::class,'store']);
+    Route::get('penyakit/delete/{id}',[PenyakitController::class,'delete']);
+    Route::delete('penyakit/destroy/{id}',[PenyakitController::class,'destroy']);
 
-
+    Route::post('/',[EmailController::class,'store']);
+    Route::get('email/index', [EmailController::class,'index']);
 
     Route::get('spesialis/index', [SpesialisController::class,'index']);
     Route::post('spesialis/index',[SpesialisController::class,'store']);
@@ -82,12 +92,15 @@ Route::middleware('auth')->group(function(){
     Route::post('karyawan/index',[KaryawanController::class,'store']);
 
 
-    Route::get('email/index', [EmailController::class,'index']);
+
+
 
 
 
     Route::get('obat/index', [ObatController::class,'index']);
     Route::post('obat/index',[ObatController::class,'store']);
+    Route::get('obat/delete/{id}',[ObatController::class,'delete']);
+    Route::delete('obat/destroy/{id}',[ObatController::class,'destroy']);
 
 
 

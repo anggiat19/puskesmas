@@ -106,20 +106,22 @@
                                 </tr>
                     </thead>
                     <tbody>
-                                {{-- @foreach ($users as $user )
+                                @foreach ($pemeriksaans as $pemeriksaan )
                                 <tr>
                                     <td style="text-align: center">{{ $loop->iteration }}</td>
-                                    <td style="text-align: center">{{ $user->username }}</td>
+                                    <td style="text-align: center">{{ $pemeriksaan->no_periksa }}</td>
 
-                                    <td style="text-align: center">{{ $user->email }}</td>
-                                    <td style="text-align: center">{{ $user->phone }}</td> --}}
+                                    <td style="text-align: center">{{ $pemeriksaan->tgl_periksa }}</td>
+                                    <td style="text-align: center">{{ $pemeriksaan->pasien->nama_p }}</td>
+                                    <td style="text-align: center">{{ $pemeriksaan->dokter->nama_d }}</td>
+                                    <td style="text-align: center">{{ $pemeriksaan->karyawan->nama_kry }}</td>
                                     {{-- <td>
 
                                         <img src="{{ asset('images/'.$user->image) }}" height="100px" alt="">
                                     </td> --}}
 
-                                    {{-- <td style="text-align: center">{{ $user->status }}</td>
-                                    <td style="text-align: center">{{ $user->user->name }}</td>
+                                    {{-- <td style="text-align: center">{{ $user->status }}</td> --}}
+                                    {{-- <td style="text-align: center">{{ $user->user->name }}</td> --}}
                                     <td style="text-align: center">
 
                                         <a href="#" class="btn btn-success">Edit</a>
@@ -128,7 +130,7 @@
 
                                 </tr>
 
-                                @endforeach --}}
+                                @endforeach
                     </tbody>
 
 
