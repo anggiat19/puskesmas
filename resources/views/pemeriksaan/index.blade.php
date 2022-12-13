@@ -61,6 +61,50 @@
                                     <label for="inputProjectLeader">Tanggal Periksa</label>
                                     <input type="date" id="inputProjectLeader" class="form-control" name="tgl_periksa">
                                   </div>
+                                  <div class="form-group">
+                                    <label for="dokter_id">Pasien Id<span style="color:red">*</span></label>
+                                    <select name="pasien_id" class="form-control" id="dokter_id" required
+                                        autofocus>
+                                        <option value="">Select Pasien</option>
+                                        @forelse ($pasiens as $pasien)
+                                            <option value="{{ $pasien->id }}"
+                                                {{ $pasien->id == old('dokter_id') ? 'selected' : '' }}>
+                                                {{ $pasien->nama_p }}</option>
+                                        @empty
+                                            <option value="" disabled>Tidak ada data</option>
+                                        @endforelse
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                  <label for="dokter_id">Dokter Id<span style="color:red">*</span></label>
+                                  <select name="dokter_id" class="form-control" id="dokter_id" required
+                                      autofocus>
+                                      <option value="">Select Dokter</option>
+                                      @forelse ($dokters as $dokter)
+                                          <option value="{{ $dokter->id }}"
+                                              {{ $dokter->id == old('dokter_id') ? 'selected' : '' }}>
+                                              {{ $dokter->nama_d }}</option>
+                                      @empty
+                                          <option value="" disabled>Tidak ada data</option>
+                                      @endforelse
+                                  </select>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="dokter_id">Karyawan Id<span style="color:red">*</span></label>
+                                <select name="karyawan_id" class="form-control" id="dokter_id" required
+                                    autofocus>
+                                    <option value="">Select Karyawan</option>
+                                    @forelse ($karyawans as $karyawan)
+                                        <option value="{{ $karyawan->id }}"
+                                            {{ $karyawan->id == old('dokter_id') ? 'selected' : '' }}>
+                                            {{ $karyawan->nama_kry }}</option>
+                                    @empty
+                                        <option value="" disabled>Tidak ada data</option>
+                                    @endforelse
+                                </select>
+                            </div>
+
 
 
 
@@ -125,7 +169,7 @@
                                     <td style="text-align: center">
 
                                         <a href="#" class="btn btn-success">Edit</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
+                                        <a href="/pemeriksaan/delete/{{ $pemeriksaan->id }}" class="btn btn-danger">Delete</a>
                                     </td>
 
                                 </tr>

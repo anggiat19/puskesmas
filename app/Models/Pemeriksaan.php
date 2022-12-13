@@ -13,7 +13,7 @@ class Pemeriksaan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'no_periksa','tgl_periksa'
+        'no_periksa','tgl_periksa','pasien_id','dokter_id','karyawan_id'
     ];
 
 

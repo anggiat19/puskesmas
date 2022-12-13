@@ -11,4 +11,7 @@ class Penyakit extends Model
     protected $fillable = [
         'nama_penyakit'
     ];
+
+
+
 }

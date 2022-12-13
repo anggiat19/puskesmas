@@ -31,6 +31,8 @@
         <div class="card">
           <div class="card-header">
             <div class="float-right">
+              <form action="" method="POST" role="form" id="quickForm" enctype="multipart/form-data">
+                @csrf
                 <a href="" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
                     <em class="fas fa-plus"></em>
                    Tambah Data
@@ -50,12 +52,54 @@
 
                                 <div class="form-group">
                                     <label for="inputClientCompany">No Urut</label>
-                                    <input type="text" id="inputClientCompany" class="form-control">
+                                    <input type="text" id="inputClientCompany" class="form-control" name="no_urut">
                                   </div>
                                   <div class="form-group">
                                     <label for="inputDescription">Kondisi Pasien</label>
-                                    <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                                    <textarea id="inputDescription" class="form-control" rows="4" name="kondisi_pasien"></textarea>
                                   </div>
+                                  <div class="form-group">
+                                    <label for="dokter_id">Pemeriksaan Id<span style="color:red">*</span></label>
+                                    <select name="pemeriksaan_id" class="form-control" id="dokter_id" required
+                                        autofocus>
+                                        <option value="">Select Pemeriksaan</option>
+                                        @forelse ($pemeriksaans as $pemeriksaan)
+                                            <option value="{{ $pemeriksaan->id }}"
+                                                {{ $pemeriksaan->id == old('dokter_id') ? 'selected' : '' }}>
+                                                {{ $pemeriksaan->pasien->nama_p}}</option>
+                                        @empty
+                                            <option value="" disabled>Tidak ada data</option>
+                                        @endforelse
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                  <label for="dokter_id">Penyakit Id<span style="color:red">*</span></label>
+                                  <select name="penyakit_id" class="form-control" id="dokter_id" required
+                                      autofocus>
+                                      <option value="">Select Penyakit</option>
+                                      @forelse ($penyakits as $penyakit)
+                                          <option value="{{ $pemeriksaan->id }}"
+                                              {{ $penyakit->id == old('dokter_id') ? 'selected' : '' }}>
+                                              {{ $penyakit->nama_penyakit }}</option>
+                                      @empty
+                                          <option value="" disabled>Tidak ada data</option>
+                                      @endforelse
+                                  </select>
+                              </div>
+                              <div class="form-group">
+                                <label for="dokter_id">Obat Id<span style="color:red">*</span></label>
+                                <select name="obat_id" class="form-control" id="dokter_id" required
+                                    autofocus>
+                                    <option value="">Select Obat</option>
+                                    @forelse ($obats as $obat)
+                                        <option value="{{ $obat->id }}"
+                                            {{ $obat->id == old('dokter_id') ? 'selected' : '' }}>
+                                            {{ $obat->nm_obat }}</option>
+                                    @empty
+                                        <option value="" disabled>Tidak ada data</option>
+                                    @endforelse
+                                </select>
+                            </div>
 
 
 
@@ -64,11 +108,12 @@
                                </div>
                                <div class="modal-footer">
                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                   <button type="button" class="btn btn-primary">Save changes</button>
+                                   <button type="submit" class="btn btn-primary">Save changes</button>
                                </div>
                                </div>
                            </div>
                            </div>
+              </form>
             </div>
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
@@ -107,7 +152,7 @@
                                     <td style="text-align: center">{{ $detailpenyakit->no_urut }}</td>
                                     <td style="text-align: center">{{ $detailpenyakit->kondisi_pasien }}</td>
 
-                                    <td style="text-align: center">{{ $detailpenyakit->pemeriksa->no_periksa}}</td>
+                                    <td style="text-align: center">{{ $detailpenyakit->pemeriksa->pasien->nama_p}}</td>
                                     <td style="text-align: center">{{ $detailpenyakit->penyakit->nama_penyakit }}</td>
                                     {{-- <td>
 
@@ -119,7 +164,7 @@
                                     <td style="text-align: center">
 
                                         <a href="#" class="btn btn-success">Edit</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
+                                        <a href="/detailpenyakit/delete/{{ $detailpenyakit->id }}" class="btn btn-danger">Delete</a>
                                     </td>
 
                                 </tr>

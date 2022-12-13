@@ -89,9 +89,14 @@ Route::middleware('auth')->group(function(){
 
     Route::get('pemeriksaan/index', [PemeriksaanController::class,'index']);
     Route::post('pemeriksaan/index',[PemeriksaanController::class,'store']);
+    Route::get('pemeriksaan/delete/{id}',[PemeriksaanController::class,'delete']);
+    Route::delete('pemeriksaan/destroy/{id}',[PemeriksaanController::class,'destroy']);
 
 
     Route::get('detailpenyakit/index', [DetailPenyakitController::class,'index']);
+    Route::post('detailpenyakit/index',[DetailPenyakitController::class,'store']);
+    Route::get('detailpenyakit/delete/{id}',[DetailPenyakitController::class,'delete']);
+    Route::delete('detailpenyakit/destroy/{id}',[DetailPenyakitController::class,'destroy']);
 
 
 
