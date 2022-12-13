@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,8 @@ class AuthController extends Controller
             $query->where('name','LIKE','%'.$search.'%');
         })
         ->paginate(5);
-        return view('user.index',['users'=>$users]);
+        $roles = Role::all();
+        return view('user.index',['users'=>$users,'roles'=>$roles]);
         // dd($users);
 
         // return view('user.index');
@@ -99,12 +101,11 @@ class AuthController extends Controller
 
             ]);
             $newName = '';
-        if($request->file('image')){
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $newName = $request->nama.'-'.now()->timestamp.'.'.$extension;
-            $request->image->move(public_path('images'), $newName);
-        }
-
+            if($request->file('image')){
+                $extension = $request->file('image')->getClientOriginalExtension();
+                $newName = $request->nama.'-'.now()->timestamp.'.'.$extension;
+                $request->image->move(public_path('images'), $newName);
+            }
             $request['image'] = $newName;
 
             $request['password'] = Hash::make($request->password);
@@ -114,8 +115,20 @@ class AuthController extends Controller
                 'email'=>$request['email'],
                 'phone'=>$request['phone'],
 
+                'status'=>$request['status'],
+                'role_id'=>$request['role_id'],
+
                 'image' => $newName
             ]);
+            // $dokters =Dokter::create([
+            //     'kode_d' => $request['kode_d'],
+            //     'nama_d'=>$request['nama_d'],
+            //     'jenis_kel_d'=>$request['jenis_kel_d'],
+            //     'alamat_d'=>$request['alamat_d'],
+            //     'spesialis_id'=>$request['spesialis_id'],
+            //     'image' => $newName
+            // ]);
+            // return redirect('/dokter/index')->with('status', 'Dokter Added Successfully');
 
 
 
@@ -125,7 +138,7 @@ class AuthController extends Controller
 
             Session::flash('status', 'success');
             Session::flash('message', 'Regist success');
-            return redirect('register');
+            return redirect('/user/index');
 
         }
         public function store(Request $request)
@@ -135,9 +148,29 @@ class AuthController extends Controller
             //     'name' => 'required|unique:categories|max:100',
 
             // ]);
-            $users =Auth::create($request->all());
+            $users =User::create($request->all());
             return redirect('/user/index')->with('status', 'User Added Successfully');
         }
+
+        public function delete($id)
+        {
+            $users = User::findOrFail($id);
+            return view('user.delete',['users'=>$users]);
+        }
+
+        public function destroy($id)
+        {
+           $deleteuser = User::findOrFail($id);
+           $deleteuser->delete();
+
+            if($deleteuser){
+                Session::flash('status',' delete success');
+                Session::flash('message','delete user succes');
+            }
+           return redirect('/user/index');
+        }
+
+
 
 
 

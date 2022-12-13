@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Email;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class EmailController extends Controller
 {
     public function index(Request $request)
 
     {
+
 
             $search = $request->search;
 
@@ -51,4 +53,23 @@ class EmailController extends Controller
          $homes =Email::create($request->all());
          return redirect('/')->with('status', 'Pasien Added Successfully');
      }
+
+     public function delete($id)
+    {
+        $emails = Email::findOrFail($id);
+        return view('email.delete',['emails'=>$emails]);
+    }
+
+    public function destroy($id)
+    {
+       $deleteemail = Email::findOrFail($id);
+       $deleteemail->delete();
+
+        if($deleteemail){
+            Session::flash('status',' delete success');
+            Session::flash('message','delete email succes');
+        }
+       return redirect('/email/index');
+    }
+
 }

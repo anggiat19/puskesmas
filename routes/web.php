@@ -43,19 +43,22 @@ Route::get('/', [EmailController::class,'home']);
     Route::get('login', [AuthController::class,'login'])->name('login');
     Route::post('login',[AuthController::class,'authenticationg']);
     Route::get('register', [AuthController::class,'register']);
-    Route::post('register', [AuthController::class,'registerprocess']);
+
 
 
 Route::middleware('auth')->group(function(){
     Route::get('logout',[AuthController::class,'logout']);
-    Route::get('dashboard',[DashboardController::class, 'index'])->middleware('only_admin');
+    Route::get('dashboard',[DashboardController::class, 'index'])->middleware('only_admin')->name('index');
 
-    Route::get('user/index', [AuthController::class,'index']);
-    Route::post('user/index',[AuthController::class,'store']);
+    Route::get('user/index', [AuthController::class,'index'])->name('index');
+    Route::post('user/index',[AuthController::class,'registerprocess']);
+    Route::get('user/delete/{id}',[AuthController::class,'delete']);
+    Route::delete('user/destroy/{id}',[AuthController::class,'destroy']);
 
 
 
-    Route::get('pasien/index', [PasienController::class,'index']);
+
+    Route::get('pasien/index', [PasienController::class,'index'])->name('index');
     Route::post('pasien/index',[PasienController::class,'store']);
     Route::get('pasien/delete/{id}',[PasienController::class,'delete']);
     Route::delete('pasien/destroy/{id}',[PasienController::class,'destroy']);
@@ -75,6 +78,8 @@ Route::middleware('auth')->group(function(){
 
     Route::post('/',[EmailController::class,'store']);
     Route::get('email/index', [EmailController::class,'index']);
+    Route::get('email/delete/{id}',[EmailController::class,'delete'])->name('email.delete.{id}');
+    Route::delete('email/destroy/{id}',[EmailController::class,'destroy'])->name('email.destroy.{id}');
 
     Route::get('spesialis/index', [SpesialisController::class,'index']);
     Route::post('spesialis/index',[SpesialisController::class,'store']);

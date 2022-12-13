@@ -146,11 +146,11 @@
 							</label>
 						</div>
 
-						<div>
+						{{-- <div>
 							<a href="#" class="txt1">
 								Forgot Password?
 							</a>
-						</div>
+						</div> --}}
 					</div>
 
 					<div class="container-login100-form-btn">
@@ -158,9 +158,9 @@
 							Login
 						</button>
 					</div>
-                    <div class="my-3">
+                    {{-- <div class="my-3">
                         don't have account ? <a href="register" >Sign Up</a>
-                      </div>
+                      </div> --}}
 				</form>
 			</div>
 		</div>

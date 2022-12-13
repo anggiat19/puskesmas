@@ -4,20 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\User;
+use App\Models\Dokter;
+use App\Models\Pasien;
 use App\Models\Category;
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
+use Asantibanez\LivewireCharts\Models\ColumnChartModel;
+use Asantibanez\LivewireCharts\Models\PieChartModel;
+use Livewire\Component;
+
 
 class DashboardController extends Controller
 {
     public function index()
+
     {
-            // $bookCount = Book::count();
-            // $category = Category::count();
-            // $userCount = User::count();
+
+    ;
+            $pasienCount = Pasien::count();
+            $dokterCount = Dokter::count();
+            $karyawanCount = Karyawan::count();
            return view('dashboard',[
-            // 'book_count' => $bookCount,
-            // 'category_count'=>$category,
-            // 'user_count'=>$userCount
+            'pasien_count' => $pasienCount,
+            'dokter_count'=>$dokterCount,
+            'karyawan_count'=>$karyawanCount,
+
+
+
 
         ]);
 

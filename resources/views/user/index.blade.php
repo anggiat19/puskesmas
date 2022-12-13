@@ -11,7 +11,7 @@
 
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper  container-fluid">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -33,7 +33,7 @@
         <div class="card">
           <div class="card-header">
             <div class="float-right">
-                {{-- <form action="" method="POST" role="form" id="quickForm">
+                <form action="" method="POST" role="form" id="quickForm" enctype="multipart/form-data">
                     @csrf
                 <a href="" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
                     <em class="fas fa-plus"></em>
@@ -57,41 +57,70 @@
                                     <input type="text" id="inputClientCompany" class="form-control" name="username">
                                   </div>
                                   <div class="form-group">
-                                    <label for="inputClientCompany">Email</label>
-                                    <input type="email" id="inputClientCompany" class="form-control" name="email">
+                                    <label for="inputClientCompany">Password</label>
+                                    <input type="password" id="inputClientCompany" class="form-control" name="password">
                                   </div>
 
                                   <div class="form-group">
-                                    <label for="inputClientCompany">Nomor Telepon</label>
+                                    <label for="inputClientCompany">No hp</label>
                                     <input type="text" id="inputClientCompany" class="form-control" name="phone"                                                                                                                                                                                                                                                                                    >
                                   </div>
-                                  <div class="form-group mb-0">
+                                  <div class="form-group">
+                                    <label for="inputClientCompany">Email</label>
+                                    <input type="email" id="inputClientCompany" class="form-control" name="email"                                                                                                                                                                                                                                                                                    >
+                                  </div>
+                                  {{-- <div class="form-group mb-0">
                                     <label for="status">Status</label>
                                     <select name="status" id="status" class="form-control" required>
                                         <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>active
                                         </option>
                                         <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>inactive</option>
                                     </select>
-                                </div>
-                                <div class="form-group mb-0">
-                                    <label for="status">Role</label>
-                                    <select name="role_id" id="status" class="form-control" required>
-                                        <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>admin
+                                </div> --}}
+                                <div class="form-group">
+                                  <label for="dokter_id">Role<span style="color:red">*</span></label>
+                                  <select name="role_id" class="form-control" id="dokter_id" required
+                                      autofocus>
+                                      <option value="">Select Role</option>
+                                      @forelse ($roles as $role)
+                                          <option value="{{ $role->id }}"
+                                              {{ $role->id == old('role_id') ? 'selected' : '' }}>
+                                              {{ $role->name }}</option>
+                                      @empty
+                                          <option value="" disabled>Tidak ada data</option>
+                                      @endforelse
+                                  </select>
+                              </div>
+                              {{-- <div class="col-md-10"> --}}
+                                <div class="form-group">
+                                    <label for="jenis_kelamin">Status<span
+                                            style="color:red">*</span></label>
+                                    <select name="status" class="form-control" id="jenis_kelamin"
+                                        required>
+                                        <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>
+                                            active
                                         </option>
-                                        <option value="2" {{ old('status') == '2' ? 'selected' : '' }}>client</option>
+                                        <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>
+                                            inactive
+                                        </option>
                                     </select>
                                 </div>
+                            {{-- </div> --}}
+                            <div class="form-group">
+                              <label for="inputClientCompany">image</label>
+                              <input type="file" id="inputClientCompany" class="form-control" name="image">
+                            </div>
 
 
                                </div>
                                <div class="modal-footer">
                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                   <button type="button" class="btn btn-primary">Save changes</button>
+                                   <button type="submit" class="btn btn-primary">Save changes</button>
                                </div>
                                </div>
                            </div>
                            </div>
-                </form> --}}
+                </form>
             </div>
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
@@ -114,12 +143,14 @@
                                 <tr >
                                     <th style="text-align: center">no</th>
                                     <th style="text-align: center">nama</th>
+                                    <th style="text-align: center">password</th>
 
                                     <th style="text-align: center">Email</th>
                                     <th style="text-align: center">No Tlp</th>
                                     {{-- <th>image</th> --}}
                                     <th style="text-align: center">Status</th>
                                     <th style="text-align: center">Role</th>
+                                    <th style="text-align: center">Image</th>
                                     <th style="text-align: center">Aksi</th>
                                 </tr>
                     </thead>
@@ -128,6 +159,7 @@
                                 <tr>
                                     <td style="text-align: center">{{ $loop->iteration }}</td>
                                     <td style="text-align: center">{{ $user->username }}</td>
+                                    <td style="text-align: center">{{ $user->password }}</td>
 
                                     <td style="text-align: center">{{ $user->email }}</td>
                                     <td style="text-align: center">{{ $user->phone }}</td>
@@ -136,12 +168,19 @@
                                         <img src="{{ asset('images/'.$user->image) }}" height="100px" alt="">
                                     </td> --}}
 
-                                    <td style="text-align: center">{{ $user->status }}</td>
+                                    {{-- <td style="text-align: center">{{ $user->status }}</td> --}}
+                                    <td style="text-align: center" class="project-state">
+                                      <span class="badge badge-{{ $user->status ? 'success' : 'danger' }}">{{ $user->status ? 'active' : 'inactive' }}</span>
+                                  </td>
                                     <td style="text-align: center">{{ $user->user->name }}</td>
+                                    <td style="text-align: center">
+                                      {{-- <img src="{{ asset('storage/cover/'.$cover->image) }}" alt="" srcset="" width="200px"> --}}
+                                      <img  src="{{ asset('images/'.$user->image) }}" width="200" alt="">
+                                  </td>
                                     <td style="text-align: center">
 
                                         <a href="#" class="btn btn-success">Edit</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
+                                        <a href="/user/delete/{{ $user->id }}" class="btn btn-danger">Delete</a>
                                     </td>
 
                                 </tr>
