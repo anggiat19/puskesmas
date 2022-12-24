@@ -106,12 +106,8 @@ https://templatemo.com/tm-540-lava-landing-page
                       <div class="carousel-item active">
                         <img src="{{ asset('landing/assets/images/banner-bg.png') }}" class="d-block w-100" alt="...">
                       </div>
-                      <div class="carousel-item">
-                        <img src="{{ asset('images/anonimous-1671542711.jpg') }}" class="d-block w-100" alt="...">
-                      </div>
-                      <div class="carousel-item active">
-                        <img src="..." class="d-block w-100" alt="...">
-                      </div>
+
+                      
 
                       <div class="header-text">
                         <div class="container">
