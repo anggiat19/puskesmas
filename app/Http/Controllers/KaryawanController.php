@@ -46,4 +46,19 @@ class KaryawanController extends Controller
         return redirect('/karyawan/index');
      }
 
+
+     public function edit(Request $request,$id)
+     {
+
+        $karyawans = Karyawan::findOrfail($id);
+        return view('karyawan.edit',['karyawans'=>$karyawans]);
+     }
+
+     public function update(Request $request ,$id){
+        $karyawans = Karyawan::findOrfail($id);
+
+        $karyawans->update($request->all());
+        return redirect('/karyawan/index');
+    }
+
 }

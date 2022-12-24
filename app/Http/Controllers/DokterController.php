@@ -17,7 +17,7 @@ class DokterController extends Controller
         ->orwhereHas('spesialis',function($query)use($search){
             $query->where('nama_spesialis','LIKE','%'.$search.'%');
         })
-        ->paginate(1);
+        ->paginate(5);
         $spesialis = Spesialis::all();
         return view('dokter.index',['dokters'=>$dokters,'spesialis'=>$spesialis]);
         // dd($users);
@@ -37,7 +37,7 @@ class DokterController extends Controller
         $newName = '';
         if($request->file('image')){
             $extension = $request->file('image')->getClientOriginalExtension();
-            $newName = $request->nama.'-'.now()->timestamp.'.'.$extension;
+            $newName = $request->nama_d.'-'.now()->timestamp.'.'.$extension;
             $request->image->move(public_path('images'), $newName);
         }
         $request['image'] = $newName;
@@ -69,6 +69,57 @@ class DokterController extends Controller
         }
        return redirect('/dokter/index');
     }
+
+    public function edit(Request $request,$id)
+    {
+
+       $dokters = Dokter::findorfail($id);
+       $spesialis = Spesialis::where('id', '!=',$dokters->spesialis_id)->select('id','nama_spesialis')->get();
+
+
+
+       return view('dokter.edit',['dokters'=>$dokters,'spesialis'=>$spesialis]);
+    }
+
+
+
+    public function update(Request $request ,$id){
+
+        $dokters = Dokter::find($id);
+
+
+
+        $validatedData = $request->validate([
+            'kode_d' => '',
+            'nama_d' => 'required', //unique:users,username,except,id
+            'image' => 'image|mimes:jpeg,png,jpg,png,svg,webp|max:2048',
+            'jenis_kel_d' => 'required',
+            'alamat_d' =>'required',
+            'spesialis_id' =>''
+
+
+            ]);
+
+
+
+            if($request->file('image') != null){
+                $imageName = $request->file('image')->getClientOriginalExtension();
+                $newName = $request->nama_d.'-'.now()->timestamp.'.'.$imageName;
+                $request->file('image')->move(public_path('images'), $newName);
+                $validatedData['image'] = $newName;
+
+            }else{
+                $validatedData['image'] = $dokters->image;
+            }
+
+            Dokter::where('id',$id)->update($validatedData);
+
+
+        // $dokters->update();
+        Session::flash('status','update success');
+
+           return redirect('/dokter/index');
+       }
 
 
 

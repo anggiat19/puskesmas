@@ -53,4 +53,25 @@ class PemeriksaanController extends Controller
          }
         return redirect('/pemeriksaan/index');
      }
+
+     public function edit(Request $request,$id)
+    {
+
+       $pemeriksaans = Pemeriksaan::findorfail($id);
+       $pasiens = Pasien::where('id', '!=',$pemeriksaans->pasien_id)->select('id','nama_p')->get();
+       $dokters = Dokter::where('id', '!=',$pemeriksaans->dokter_id)->select('id','nama_d')->get();
+       $karyawans = Karyawan::where('id', '!=',$pemeriksaans->karyawan_id)->select('id','nama_kry')->get();
+
+
+
+       return view('pemeriksaan.edit',['pemeriksaans'=>$pemeriksaans,'pasiens'=>$pasiens,'dokters'=>$dokters,'karyawans'=>$karyawans]);
+    }
+
+    public function update(Request $request ,$id){
+        $pemeriksaans = Pemeriksaan::findOrfail($id);
+
+        $pemeriksaans->update($request->all());
+        return redirect('/pemeriksaan/index');
+    }
+
 }

@@ -7,6 +7,7 @@ use App\Models\Penyakit;
 use App\Models\Pemeriksaan;
 use Illuminate\Http\Request;
 use App\Models\DetailPenyakit;
+use App\Models\Pasien;
 use Illuminate\Support\Facades\Session;
 
 class DetailPenyakitController extends Controller
@@ -35,6 +36,7 @@ class DetailPenyakitController extends Controller
          // ]);
          $detailpenyakits =DetailPenyakit::create($request->all());
          return redirect('/detailpenyakit/index')->with('status', 'DetailPenyakit Added Successfully');
+
      }
 
 
@@ -55,4 +57,25 @@ class DetailPenyakitController extends Controller
         }
        return redirect('/detailpenyakit/index');
     }
+
+    public function edit(Request $request,$id)
+    {
+
+       $detailpenyakits = DetailPenyakit::findorfail($id);
+       $pemeriksaans = Pemeriksaan::where('id', '!=',$detailpenyakits->pemeriksaan_id)->select('id','id')->get();
+       $penyakits = Penyakit::where('id', '!=',$detailpenyakits->penyakit_id)->select('id','nama_penyakit')->get();
+       $obats = Obat::where('id', '!=',$detailpenyakits->obat_id)->select('id','nm_obat')->get();
+
+
+
+       return view('detailpenyakit.edit',['detailpenyakits'=>$detailpenyakits,'pemeriksaans'=>$pemeriksaans,'penyakits'=>$penyakits,'obats'=>$obats]);
+    }
+
+    public function update(Request $request ,$id){
+        $detailpenyakits = DetailPenyakit::findOrfail($id);
+
+        $detailpenyakits->update($request->all());
+        return redirect('/detailpenyakit/index');
+    }
+
 }

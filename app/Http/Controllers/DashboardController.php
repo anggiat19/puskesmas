@@ -20,7 +20,7 @@ class DashboardController extends Controller
 
     {
 
-    ;
+
             $pasienCount = Pasien::count();
             $dokterCount = Dokter::count();
             $karyawanCount = Karyawan::count();
@@ -36,4 +36,6 @@ class DashboardController extends Controller
 
 
     }
+
+
 }

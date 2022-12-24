@@ -168,7 +168,7 @@
                                     {{-- <td style="text-align: center">{{ $user->user->name }}</td> --}}
                                     <td style="text-align: center">
 
-                                        <a href="#" class="btn btn-success">Edit</a>
+                                        <a href="/pemeriksaan/edit/{{ $pemeriksaan->id }}" class="btn btn-success">Edit</a>
                                         <a href="/pemeriksaan/delete/{{ $pemeriksaan->id }}" class="btn btn-danger">Delete</a>
                                     </td>
 

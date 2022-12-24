@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Email;
+use App\Models\Dokter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -34,9 +35,9 @@ class EmailController extends Controller
              // $bookCount = Book::count();
              // $category = Category::count();
              // $userCount = User::count();
-            return view('home'             // 'book_count' => $bookCount,
-             // 'category_count'=>$category,
-             // 'user_count'=>$userCount
+             $dokters = Dokter::all();
+            return view('home',['dokters'=>$dokters]             // 'book_count' => $bookCount,
+
 
          );
 

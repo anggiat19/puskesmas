@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Dokter;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Spesialis extends Model
 {
@@ -12,4 +13,9 @@ class Spesialis extends Model
     protected $fillable = [
         'kode_spesialis','nama_spesialis'
     ];
+
+
+
+
+
 }

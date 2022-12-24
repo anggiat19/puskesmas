@@ -18,7 +18,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-
+      @if (Auth::user()->role_id == 1)
       <li class="nav-item dropdown">
         <a class="nav-link" data-slide="true" href="/email/index" role="button">
           <i class="far fa-comments"></i>
@@ -76,6 +76,7 @@
           <a href="/detailpenyakit/index" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
       </li>
+      @endif
 
       <li class="nav-item">
         <a class="nav-link"  data-slide="true" href="/logout" role="button">

@@ -56,4 +56,20 @@ class SpesialisController extends Controller
         }
        return redirect('/spesialis/index');
     }
+
+
+
+    public function edit(Request $request,$id)
+    {
+
+       $spesialis = Spesialis::findorfail($id);
+       return view('spesialis.edit',['spesialis'=>$spesialis]);
+    }
+
+    public function update(Request $request ,$id){
+       $spesialis = Spesialis::findOrfail($id);
+
+       $spesialis->update($request->all());
+       return redirect('/spesialis/index');
+   }
 }

@@ -78,7 +78,7 @@
                                       autofocus>
                                       <option value="">Select Penyakit</option>
                                       @forelse ($penyakits as $penyakit)
-                                          <option value="{{ $pemeriksaan->id }}"
+                                          <option value="{{ $penyakit->id }}"
                                               {{ $penyakit->id == old('dokter_id') ? 'selected' : '' }}>
                                               {{ $penyakit->nama_penyakit }}</option>
                                       @empty
@@ -163,7 +163,7 @@
 
                                     <td style="text-align: center">
 
-                                        <a href="#" class="btn btn-success">Edit</a>
+                                        <a href="/detailpenyakit/edit/{{ $detailpenyakit->id }}" class="btn btn-success">Edit</a>
                                         <a href="/detailpenyakit/delete/{{ $detailpenyakit->id }}" class="btn btn-danger">Delete</a>
                                     </td>
 

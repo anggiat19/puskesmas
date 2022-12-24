@@ -109,7 +109,7 @@
 
                                     <td style="text-align: center">
 
-                                        <a href="#" class="btn btn-success">Edit</a>
+                                        <a href="/penyakit/edit/{{ $penyakit->id }}" class="btn btn-success">Edit</a>
                                         <a href="/penyakit/delete/{{ $penyakit->id }}" class="btn btn-danger">Delete</a>
                                     </td>
 

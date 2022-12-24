@@ -47,4 +47,20 @@ class PenyakitController extends Controller
          }
         return redirect('/penyakit/index');
      }
+
+
+
+     public function edit(Request $request,$id)
+     {
+
+        $penyakits = Penyakit::findorfail($id);
+        return view('penyakit.edit',['penyakits'=>$penyakits]);
+     }
+
+     public function update(Request $request ,$id){
+        $penyakits = Penyakit::findOrfail($id);
+
+        $penyakits->update($request->all());
+        return redirect('/penyakit/index');
+    }
 }

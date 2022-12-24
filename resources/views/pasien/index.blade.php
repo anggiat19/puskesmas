@@ -153,6 +153,7 @@
                 </form>
 
             </div>
+            @if (Auth::user()->role_id == 1)
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
                     <input class="form-control form-control-navbar" name="search" type="search" placeholder="Search"
@@ -164,12 +165,13 @@
                     </div>
                 </div>
             </form>
+            @endif
           </div>
           <!-- /.card-header -->
           <div class="card-body">
             <div id="jsGrid1">
 
-
+                {{-- @if (Auth::user()->role_id == 1) --}}
                 <table class="table table-bordered " >
                     <thead>
                                 <tr >
@@ -184,8 +186,11 @@
                                     <th style="text-align: center">Aksi</th>
                                 </tr>
                     </thead>
+
                     <tbody>
                                 @foreach ($pasiens as $pasien )
+
+                                @if($pasien->user_id == Auth::user()->id || Auth::user()->role_id == 1 )
                                 <tr>
                                     <td style="text-align: center">{{ $loop->iteration }}</td>
                                     <td style="text-align: center">{{ $pasien->kode_p }}</td>
@@ -199,11 +204,15 @@
 
                                     <td style="text-align: center">
 
-                                        <a href="#" class="btn btn-success">Edit</a>
+                                        <a href="/pasien/edit/{{ $pasien->id }}" class="btn btn-success">Edit</a>
                                         <a href="/pasien/delete/{{ $pasien->id }}" class="btn btn-danger">Delete</a>
+
+
                                     </td>
 
                                 </tr>
+                                @endif
+
 
                                 @endforeach
                     </tbody>
@@ -211,6 +220,8 @@
 
                             </table>
                             {{ $pasiens->withQueryString()->links() }}
+                            {{-- @endif --}}
+
             </div>
           </div>
           <!-- /.card-body -->

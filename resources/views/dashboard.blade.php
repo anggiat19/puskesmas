@@ -101,6 +101,7 @@
         <div id="container2">
 
         </div>
+        </section>
 
 </div>
 <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -178,7 +179,7 @@
     },
     yAxis: {
         title: {
-            text: 'Total percent market share'
+            text: 'Total percent puskesmas '
         }
 
     },

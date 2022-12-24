@@ -12,10 +12,12 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('adminlte') }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            <img src="{{ auth()->user()->image ? asset('images/' . auth()->user()->image) : 'https://ui-avatars.com/api/?size=128&name=' . urlencode(auth()->user()->username) . '&color=7F9CF5&background=EBF4FF' }}"
+            class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+            <a href="{{ '/user/index', auth()->user()->id }}"
+                class="d-block">{{ auth()->user()->username }}</a>
         </div>
       </div>
 
@@ -24,6 +26,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               @if (Auth::user()->role_id == 1)
           <li class="nav-item ">
             <a href="../dashboard"
                         class="nav-link {{ Request::is('dashboard') ?'active':''}}">
@@ -32,6 +35,8 @@
                     </a>
 
           </li>
+          @endif
+
           <li class="nav-item ">
             <a href="/pasien/index" class="nav-link {{ Request::is('pasien/index') ?'active':''}}">
               <i class="nav-icon fas fa-notes-medical"></i>
@@ -42,7 +47,7 @@
             </a>
           </li>
 
-
+          @if (Auth::user()->role_id == 1)
           <li class="nav-item">
             <a href="/obat/index" class="nav-link  {{ Request::is('obat/index') ?'active':''}}">
               <i class="nav-icon fas fa-pills	"></i>
@@ -330,6 +335,8 @@
               </p>
             </a>
           </li>
+          @endif
+
           <li class="nav-item">
 
                 <a href="/user/index" class="nav-link {{ Request::is('user/index') ?'active':''}}">
@@ -340,6 +347,7 @@
               </p>
             </a>
           </li>
+
 
           {{-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -608,4 +616,5 @@
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar --> --}}
+
   </aside>

@@ -33,6 +33,7 @@
         <div class="card">
           <div class="card-header">
             <div class="float-right">
+                @if( Auth::user()->role_id == 1 )
                 <form action="" method="POST" role="form" id="quickForm" enctype="multipart/form-data">
                     @csrf
                 <a href="" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
@@ -77,6 +78,7 @@
                                         <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>inactive</option>
                                     </select>
                                 </div> --}}
+
                                 <div class="form-group">
                                   <label for="dokter_id">Role<span style="color:red">*</span></label>
                                   <select name="role_id" class="form-control" id="dokter_id" required
@@ -105,6 +107,7 @@
                                         </option>
                                     </select>
                                 </div>
+
                             {{-- </div> --}}
                             <div class="form-group">
                               <label for="inputClientCompany">image</label>
@@ -121,6 +124,7 @@
                            </div>
                            </div>
                 </form>
+                @endif
             </div>
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
@@ -141,25 +145,32 @@
                 <table class="table table-bordered " >
                     <thead>
                                 <tr >
+                                    @if( Auth::user()->role_id == 1 )
                                     <th style="text-align: center">no</th>
+                                    @endif
                                     <th style="text-align: center">nama</th>
-                                    <th style="text-align: center">password</th>
+                                    {{-- <th style="text-align: center">password</th> --}}
 
                                     <th style="text-align: center">Email</th>
                                     <th style="text-align: center">No Tlp</th>
                                     {{-- <th>image</th> --}}
+                                    @if( Auth::user()->role_id == 1 )
                                     <th style="text-align: center">Status</th>
                                     <th style="text-align: center">Role</th>
+                                    @endif
                                     <th style="text-align: center">Image</th>
                                     <th style="text-align: center">Aksi</th>
                                 </tr>
                     </thead>
                     <tbody>
                                 @foreach ($users as $user )
+                                @if($user->id == Auth::user()->id || Auth::user()->role_id == 1 )
                                 <tr>
+                                    @if( Auth::user()->role_id == 1 )
                                     <td style="text-align: center">{{ $loop->iteration }}</td>
+                                    @endif
                                     <td style="text-align: center">{{ $user->username }}</td>
-                                    <td style="text-align: center">{{ $user->password }}</td>
+                                    {{-- <td style="text-align: center">{{ $user->password }}</td> --}}
 
                                     <td style="text-align: center">{{ $user->email }}</td>
                                     <td style="text-align: center">{{ $user->phone }}</td>
@@ -169,28 +180,32 @@
                                     </td> --}}
 
                                     {{-- <td style="text-align: center">{{ $user->status }}</td> --}}
+                                    @if( Auth::user()->role_id == 1 )
                                     <td style="text-align: center" class="project-state">
                                       <span class="badge badge-{{ $user->status ? 'success' : 'danger' }}">{{ $user->status ? 'active' : 'inactive' }}</span>
                                   </td>
                                     <td style="text-align: center">{{ $user->user->name }}</td>
+                                    @endif
                                     <td style="text-align: center">
                                       {{-- <img src="{{ asset('storage/cover/'.$cover->image) }}" alt="" srcset="" width="200px"> --}}
                                       <img  src="{{ asset('images/'.$user->image) }}" width="200" alt="">
                                   </td>
+
                                     <td style="text-align: center">
 
-                                        <a href="#" class="btn btn-success">Edit</a>
+                                        <a href="/user/edit/{{ $user->id }}" class="btn btn-success">Edit</a>
                                         <a href="/user/delete/{{ $user->id }}" class="btn btn-danger">Delete</a>
                                     </td>
 
                                 </tr>
+                                @endif
 
                                 @endforeach
                     </tbody>
 
 
                             </table>
-                            {{ $users->withQueryString()->links() }}
+                            {{-- {{ $users->withQueryString()->links() }} --}}
             </div>
           </div>
           <!-- /.card-body -->

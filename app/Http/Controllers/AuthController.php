@@ -65,8 +65,8 @@ class AuthController extends Controller
              if(Auth::user()->role_id == 1){
                 return redirect('dashboard');
              }
-             if(Auth::user()->role_id == 1){
-                return redirect('profile');
+             if(Auth::user()->role_id == 2){
+                return redirect('client');
              }
 
              return redirect();
@@ -97,13 +97,15 @@ class AuthController extends Controller
                 'email' => 'required',
                 'phone' => 'max:255',
                 'image'=> 'max:2048',
+                 'status'=>'',
+                'role_id'=>'',
 
 
             ]);
             $newName = '';
             if($request->file('image')){
                 $extension = $request->file('image')->getClientOriginalExtension();
-                $newName = $request->nama.'-'.now()->timestamp.'.'.$extension;
+                $newName = $request->username.'-'.now()->timestamp.'.'.$extension;
                 $request->image->move(public_path('images'), $newName);
             }
             $request['image'] = $newName;
@@ -120,20 +122,6 @@ class AuthController extends Controller
 
                 'image' => $newName
             ]);
-            // $dokters =Dokter::create([
-            //     'kode_d' => $request['kode_d'],
-            //     'nama_d'=>$request['nama_d'],
-            //     'jenis_kel_d'=>$request['jenis_kel_d'],
-            //     'alamat_d'=>$request['alamat_d'],
-            //     'spesialis_id'=>$request['spesialis_id'],
-            //     'image' => $newName
-            // ]);
-            // return redirect('/dokter/index')->with('status', 'Dokter Added Successfully');
-
-
-
-
-
 
 
             Session::flash('status', 'success');
@@ -141,16 +129,40 @@ class AuthController extends Controller
             return redirect('/user/index');
 
         }
-        public function store(Request $request)
-
+        public function registerprocess1(Request $request)
         {
-            // $validated = $request->validate([
-            //     'name' => 'required|unique:categories|max:100',
 
-            // ]);
-            $users =User::create($request->all());
-            return redirect('/user/index')->with('status', 'User Added Successfully');
+
+
+            // dd($request->all());
+            $validated = $request->validate([
+                'username' => 'required|unique:users|max:255',
+                'password' => 'required|max:255',
+                'email' => 'required',
+                'phone' => 'max:255',
+
+
+
+            ]);
+           
+
+            $request['password'] = Hash::make($request->password);
+            $user = User::create([
+                'username' => $request['username'],
+                'password'=>$request['password'],
+                'email'=>$request['email'],
+                'phone'=>$request['phone'],
+
+
+            ]);
+
+
+            Session::flash('status', 'success');
+            Session::flash('message', 'Regist success');
+            return redirect('/user/index');
+
         }
+
 
         public function delete($id)
         {
@@ -169,6 +181,59 @@ class AuthController extends Controller
             }
            return redirect('/user/index');
         }
+
+
+
+
+        public function edit(Request $request,$id)
+        {
+
+           $users = User::findorfail($id);
+            $roles = Role::where('id', '!=',$users->role_id)->select('id','name')->get();
+           return view('user.edit',['users'=>$users,'roles'=>$roles]);
+        }
+
+
+        public function update(Request $request ,$id){
+
+            $users = User::findOrfail($id);
+
+            $request['password'] = Hash::make($request->password);
+
+            $validatedData = $request->validate([
+                'username' => 'required',
+                'password' => 'required',
+                'email' => 'required',
+                'phone' =>'required',//unique:users,username,except,id
+                'image' => '',
+                'status'=>'',
+
+                'role_id' =>''
+
+
+
+                ]);
+
+
+
+                if($request->file('image') !=null){
+                    $imageName = $request->file('image')->getClientOriginalExtension();
+                    $newName = $request->username.'-'.now()->timestamp.'.'.$imageName;
+                    $request->file('image')->move(public_path('images'), $newName);
+                    $validatedData['image'] = $newName;
+
+                }else{
+                    $validatedData['image'] = $users->image;
+                }
+
+                User::where('id',$id)->update($validatedData);
+
+
+            // $dokters->update();
+            Session::flash('status','update success');
+
+               return redirect('/user/index');
+           }
 
 
 

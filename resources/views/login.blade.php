@@ -158,9 +158,9 @@
 							Login
 						</button>
 					</div>
-                    {{-- <div class="my-3">
+                    <div class="my-3">
                         don't have account ? <a href="register" >Sign Up</a>
-                      </div> --}}
+                      </div>
 				</form>
 			</div>
 		</div>

@@ -57,7 +57,7 @@
                                     <input type="text" id="inputClientCompany" class="form-control" name="nik">
                                   </div>
                                   <div class="form-group">
-                                    <label for="inputClientCompany">Nama Nama_Karyawan</label>
+                                    <label for="inputClientCompany">Nama_Karyawan</label>
                                     <input type="text" id="inputClientCompany" class="form-control" name="nama_kry">
                                   </div>
                                   <div class="form-group">
@@ -145,7 +145,7 @@
                                     <td style="text-align: center">{{ $user->user->name }}</td> --}}
                                     <td style="text-align: center">
 
-                                        <a href="#" class="btn btn-success">Edit</a>
+                                        <a href="/karyawan/edit/{{ $karyawan->id }}" class="btn btn-success">Edit</a>
                                         <a href="/karyawan/delete/{{ $karyawan->id }}" class="btn btn-danger">Delete</a>
                                     </td>
 

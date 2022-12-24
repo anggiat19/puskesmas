@@ -9,6 +9,8 @@
     <meta name="author" content="TemplateMo">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+
     <title>Puskesamas</title>
 <!--
 
@@ -44,14 +46,22 @@ https://templatemo.com/tm-540-lava-landing-page
 
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
+                        {{-- <a href="index.html" class="logo">
                             Puskesmas
-                        </a>
+                        </a> --}}
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s" >
+                            <img src="{{ asset('images/logo-puskesmas.png') }}" alt="" srcset="" class="logo" width="190px" style="margin-top: 5px">
+                            <img src="{{ asset('images/puskesmas.png') }}" alt="" srcset="" class="logo" width="50px" style="margin-top: 15px">
+                        </div>
+
+
+                        {{-- <img src="{{ asset('landing') }}/assets/images/logo.png" alt=""> --}}
+
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
@@ -84,24 +94,78 @@ https://templatemo.com/tm-540-lava-landing-page
 
 
     <!-- ***** Welcome Area Start ***** -->
-    <div class="welcome-area" id="welcome">
 
-        <!-- ***** Header Text Start ***** -->
-        <div class="header-text">
-            <div class="container">
-                <div class="row">
-                    <div class="left-text col-lg-6 col-md-12 col-sm-12 col-xs-12"
-                        data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
-                        <h1>Simple App that we <em>CREATE</em></h1>
-                        <p>Lava <a href="#">HTML landing page</a> template is provided by <a href="#">TemplateMo</a>.
-                           You can modify and use it for your commercial websites for free of charge. This template is last updated on 29 Oct 2019.</p>
-                        <a href="#about" class="main-button-slider">KNOW US BETTER</a>
+
+
+        <div class="welcome-area " id="welcome" >
+
+            <!-- ***** Header Text Start ***** -->
+
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" >
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="{{ asset('landing/assets/images/banner-bg.png') }}" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="{{ asset('images/anonimous-1671542711.jpg') }}" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item active">
+                        <img src="..." class="d-block w-100" alt="...">
+                      </div>
+
+                      <div class="header-text">
+                        <div class="container">
+
+                            <div class="row">
+                                <div class="left-text col-lg-6 col-md-12 col-sm-12 col-xs-12"
+                                    data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+                                    <h1>Simple App that we <em>CREATE</em></h1>
+                                    <p>Lava <a href="#">HTML landing page</a> template is provided by <a href="#">TemplateMo</a>.
+                                       You can modify and use it for your commercial websites for free of charge. This template is last updated on 29 Oct 2019.</p>
+                                    <a href="#about" class="main-button-slider">KNOW US BETTER</a>
+                                </div>
+
+
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+
+                    </div>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- ***** Header Text End ***** -->
+
         </div>
-        <!-- ***** Header Text End ***** -->
-    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- ***** Welcome Area End ***** -->
 
     <!-- ***** Features Big Item Start ***** -->
@@ -163,7 +227,9 @@ https://templatemo.com/tm-540-lava-landing-page
             <div class="row">
                 <div class="left-image col-lg-5 col-md-12 col-sm-12 mobile-bottom-fix-big"
                     data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
-                    <img src="{{ asset('landing') }}/assets/images/left-image.png" class="rounded img-fluid d-block mx-auto" alt="App">
+                    {{-- <img src="{{ asset('landing') }}/assets/images/left-image.png" class="rounded img-fluid d-block mx-auto" alt="App"> --}}
+                    <iframe src="" frameborder="0"></iframe>
+                    <iframe width="100%" height="300" frameborder="10" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps?q=-0.8525512914114105, 101.47604386924012&hl=es;z=14&output=embed"></iframe>
                 </div>
                 <div class="right-text offset-lg-1 col-lg-6 col-md-12 col-sm-12 mobile-bottom-fix">
                     <ul>
@@ -209,17 +275,20 @@ https://templatemo.com/tm-540-lava-landing-page
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="center-heading">
-                        <h2>What They Think <em>About Us</em></h2>
-                        <p>Suspendisse vitae laoreet mauris. Fusce a nisi dapibus, euismod purus non, convallis odio.
-                            Donec vitae magna ornare, pellentesque ex vitae, aliquet urna.</p>
+                        <h2>Solusi Kesehatan  <em>Terlengkap</em></h2>
+                        <p>Chat dokter, kunjungi rumah sakit, beli obat, cek lab dan update informasi seputar kesehatan, semua bisa.</p>
                     </div>
                 </div>
+
+
+
                 <div class="col-lg-10 col-md-12 col-sm-12 mobile-bottom-fix-big"
                     data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
                     <div class="owl-carousel owl-theme">
+                        @foreach ($dokters as $dokter )
                         <div class="item service-item">
                             <div class="author">
-                                <i><img src="{{ asset('landing') }}/assets/images/testimonial-author-1.png" alt="Author One"></i>
+                                <i><img src="{{ asset('images/'.$dokter->image) }}" alt="Author One"></i>
                             </div>
                             <div class="testimonial-content">
                                 <ul class="stars">
@@ -229,13 +298,14 @@ https://templatemo.com/tm-540-lava-landing-page
                                     <li><i class="fa fa-star"></i></li>
                                     <li><i class="fa fa-star"></i></li>
                                 </ul>
-                                <h4>Jonathan Smart</h4>
-                                <p>“Nullam hendrerit, elit a semper pharetra, ipsum nibh tristique tortor, in tempus
-                                    urna elit in mauris.”</p>
-                                <span>Besta CTO</span>
+                                <h4>{{ $dokter->nama_d }}</h4>
+                                <p>{{ $dokter->spesialis->nama_spesialis }}</p>
+
                             </div>
                         </div>
-                        <div class="item service-item">
+                        @endforeach
+
+                        {{-- <div class="item service-item">
                             <div class="author">
                                 <i><img src="{{ asset('landing') }}/assets/images/testimonial-author-1.png" alt="Second Author"></i>
                             </div>
@@ -253,6 +323,8 @@ https://templatemo.com/tm-540-lava-landing-page
                                 <span>Web Analyst</span>
                             </div>
                         </div>
+
+
                         <div class="item service-item">
                             <div class="author">
                                 <i><img src="{{ asset('landing') }}/assets/images/testimonial-author-1.png" alt="Author Third"></i>
@@ -285,9 +357,13 @@ https://templatemo.com/tm-540-lava-landing-page
                                     congue a fringilla sed, maximus et urna."</p>
                                 <span>New Villager</span>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
+
+
+
+
             </div>
         </div>
     </section>
@@ -335,11 +411,10 @@ https://templatemo.com/tm-540-lava-landing-page
                     </div>
                     <!-- ***** Contact Form End ***** -->
                     <div class="right-content col-lg-6 col-md-12 col-sm-12">
-                        <h2>More About <em>Lava</em></h2>
-                        <p>Phasellus dapibus urna vel lacus accumsan, iaculis eleifend leo auctor. Duis at finibus odio.
-                            Vivamus ut pharetra arcu, in porta metus. Suspendisse blandit pulvinar ligula ut elementum.
-                            <br><br>If you need this contact form to send email to your inbox, you may follow our <a
-                                rel="nofollow" href="https://templatemo.com/contact" target="_parent">contact</a> page
+                        <h2>TENTANG  <em>KAMI</em></h2>
+                        <p>Puskesmas Gambirsari adalah salah satu Puskesmas di Kota Surakarta yang beralamatkan di Jl. Kelud Barat RT 03 RW 04 Kelurahan Joglo, Kecamatan Banjarsari, Kota Surakarta. Wilayah binaan Puskesmas Gambirsari meliputi Kelurahan Joglo, Kelurahan Banjarsari dan Kelurahan Kadipiro.
+                            <br><br>Puskesmas Gambirsari merupakan fasilitas pelayanan kesehatan tingkat pertama dalam upaya menyelenggarakan Upaya Kesehatan Masyarakat dan Upaya Kesehatan Perorangan dengan mengutamakan Upaya Promotif dan Preventif untuk mencapai derajat kesehatan masyarakat yang setinggi-tingginya.
+
                             for more detail.</p>
                         {{-- <ul class="social">
                             <li><a href="https://fb.com/templatemo"><i class="fa fa-facebook"></i></a></li>
@@ -348,6 +423,7 @@ https://templatemo.com/tm-540-lava-landing-page
                             <li><a href="#"><i class="fa fa-rss"></i></a></li>
                             <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
                         </ul> --}}
+
                     </div>
                 </div>
             </div>
@@ -357,7 +433,9 @@ https://templatemo.com/tm-540-lava-landing-page
                         <p>Copyright &copy; 2022 Kelompok 3
 
                        </p>
+                       <img src="{{ asset('images/logo-Germas.png') }}" alt="" srcset="" class="logo" width="150px" >
                     </div>
+
                 </div>
             </div>
         </div>

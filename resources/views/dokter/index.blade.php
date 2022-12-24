@@ -99,13 +99,30 @@
                                               @endforelse
                                           </select>
                                       </div>
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label for="inputClientCompany">image</label>
-                                            <input type="file" id="inputClientCompany" class="form-control" name="image">
+                                            <img src="" class="img-preview img-fluid" alt="" srcset="">
+                                            <input type="file" id="image" class="form-control" name="image" onchange="previewImage()">
+                                          </div> --}}
+                                          <div class="form-group">
+                                            <label for="inputClientCompany">image</label>
+                                            <input type="file" class="form-control @error('image') is-invalid
+
+                                            @enderror" value="{{ old('image') }}" id="image" name="image" accept="images/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
                                           </div>
+                                          @error('image')
+                                          <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+
+                                          </span>
+
+                                          @enderror
+
 
 
                                </div>
+                               <img  src=""  id="output" width="200" alt="">
+
                                <div class="modal-footer">
                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                    <button type="submit" class="btn btn-primary">Save changes</button>
@@ -169,7 +186,7 @@
                                     {{-- <td style="text-align: center">{{ $user->user->name }}</td> --}}
                                     <td style="text-align: center">
 
-                                        <a href="#" class="btn btn-success">Edit</a>
+                                        <a href="/dokter/edit/{{ $dokter->id }}" class="btn btn-success">Edit</a>
                                         <a href="/dokter/delete/{{ $dokter->id }}" class="btn btn-danger">Delete</a>
                                     </td>
 
@@ -296,7 +313,24 @@
         <!-- Main row -->
         <div class="row">
           <!-- Left col -->
-          <section class="col-lg-7 connectedSortable">
+          {{-- <section class="col-lg-7 connectedSortable">
+            <script>
+
+                function previewImage(){
+                    const image = document.querySelector('#image');
+                const imgPreview = document.querySelector('#img-preview');
+
+                imgPreview.style.dispaly = 'block';
+
+                const oFReader = FileReader();
+                oFReader.readAsDataURL(image.files[0]);
+
+                oFReader.onload = function(oFREvent) {
+                    imgPreview.src = oFREvent.target.result;
+                }
+
+
+            </script> --}}
 
 
 @endsection

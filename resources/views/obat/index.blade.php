@@ -112,12 +112,21 @@
 
                                 <div class="form-group">
                                     <label for="inputClientCompany">image</label>
-                                    <input type="file" id="inputClientCompany" class="form-control" name="image">
+                                    <input type="file" class="form-control @error('image') is-invalid
+
+                                    @enderror" value="{{ old('image') }}" id="image" name="image" accept="images/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
                                   </div>
+                                  @error('image')
+                                  <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
 
+                                  </span>
 
+                                  @enderror
 
                                </div>
+                               <img  src=""  id="output" width="200" alt="">
+
                                <div class="modal-footer">
                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                    <button type="submit" class="btn btn-primary">Save changes</button>
@@ -191,7 +200,7 @@
                                     <td style="text-align: center">{{ $user->user->name }}</td> --}}
                                     <td style="text-align: center">
 
-                                        <a href="#" class="btn btn-success">Edit</a>
+                                        <a href="/obat/edit/{{ $obat->id }}" class="btn btn-success">Edit</a>
                                         <a href="/obat/delete/{{ $obat->id }}" class="btn btn-danger">Delete</a>
                                     </td>
 
